@@ -1,0 +1,23 @@
+# Seixal - Alcobaça
+19, ['A', 'C', 'G']
+26, ['A', 'B', 'E', 'G']
+30, ['A', 'C', 'B', 'E', 'G']
+42, ['A', 'C', 'B', 'F', 'E', 'G']
+59, ['A', 'D', 'C', 'B', 'F', 'E', 'G']
+# Alforninha - Seixal
+45, ['E', 'G', 'D', 'C', 'A']
+57, ['E', 'G', 'D', 'C', 'B', 'A']
+# Junqueira - Pico Ruivo
+39, ['F', 'E', 'D', 'C', 'B']
+51, ['F', 'E', 'G', 'D', 'C', 'B']
+63, ['F', 'E', 'G', 'D', 'C', 'A', 'B']
+# Alcobaça - Queimadas
+33, ['G', 'E', 'D', 'C']
+41, ['G', 'F', 'E', 'D', 'C']
+# Seixal - Junqueira
+24, ['A', 'B', 'F']
+25, ['A', 'F']
+28, ['A', 'C', 'B', 'F']
+36, ['A', 'B', 'E', 'G', 'F']
+40, ['A', 'C', 'B', 'E', 'G', 'F']
+57, ['A', 'D', 'C', 'B', 'E', 'G', 'F']
