@@ -1,6 +1,6 @@
-
 import sys
 import ast
+
 
 
 class Node(object):
@@ -19,20 +19,49 @@ class Node(object):
         """
         self._name = name
 
-        
     def getName(self):
         """
         Gets the name
         """
         return self._name
-
     
+    def setName(self,newName):
+        """
+        Sets self._name new value.
+
+        Requires:
+        newName is str
+        Ensures:
+        self.getName() == newName
+        """
+        self._name = newName
+
+    def __eq__ (self, otherNode):
+        """
+        Compares two Node objects attributes.
+        
+        Requires: otherNode is Node object
+        Ensures: A boolean value obtained from the equality comparison of
+        _name attribute of both Node objects
+        """
+        return self.getName()==otherNode.getName()
+
+    def __lt__(self, otherNode):
+        """
+        Compares two Node objects attributes.
+        
+        Requires: otherNode is Node object
+        Ensures: A boolean value obtained from the less than comparison
+        of _name attribute of both Node objects by node's name
+        """
+        return self.getName()<otherNode.getName()
+
     def __str__(self):
         """
         String representation
         """
         return self._name
-
+    
 
 
 class Edge(object):
@@ -45,14 +74,13 @@ class Edge(object):
         Constructs an Edge
         
         Requires:
-        src and dst Nodes
+        src and dst Nodes, time is a int(?)
         Ensures:
-        Edge such that src == self.getSource() and dest == self.getDestination() 
+        Edge such that src == self.getSource() and dest == self.getDestination() and time == self.getTime() 
         """
         self._src = src
         self._dest = dest
         self._time = time
-
         
     def getSource(self):
         """
@@ -60,20 +88,72 @@ class Edge(object):
         """
         return self._src
 
-    
     def getDestination(self):
         """
         Gets the destination Node
         """
         return self._dest
-    
 
     def getTime(self):
         """
-        Gets the destination Node
+        Gets the time Node
         """
         return self._time
 
+    def setSource(self,newSource):
+        """
+        Sets self._src new value.
+
+        Requires:
+        newSource is str
+        Ensures:
+        self.getSource() == newSource
+        """
+        self._src = newSource
+
+    def setDestination(self,newDestination):
+        """
+        Sets self._dest new value.
+
+        Requires:
+        newDestination is str
+        Ensures:
+        self.getDestination() == newDestination
+        """
+        self._dest = newDestination
+
+    def setTime(self,newTime):
+        """
+        Sets self._time new value.
+
+        Requires:
+        newTime is str
+        Ensures:
+        self.getTime() == newTime
+        """
+        self._time = newTime
+
+    def __eq__ (self, otherEdge):
+        """
+        Compares two Edge objects attributes.
+        
+        Requires: otherNode is Edge object
+        Ensures: A boolean value obtained from the equality comparison of
+        _src, _dest and _time attribute of both Edge objects
+        """
+        return self.getSource()==otherEdge.getSource() and\
+              self.getDestination()==otherEdge.getDestination() and\
+              self.getTime()==otherEdge.getTime()
+
+    def __lt__(self, otherEdge):
+        """
+        Compares two Edge objects attributes.
+        
+        Requires: otherNode is Edge object
+        Ensures: A boolean value obtained from the less than comparison
+        of _time attribute of Edge Node objects by node's name
+        """
+        return self.getTime()==otherEdge.getTime()
 
     def __str__(self):
         """
@@ -94,13 +174,63 @@ class Digraph(object):
         
         Ensures:
         empty Digraph, i.e.
-        Digraph such that [] == self.getNodes() and {} == self.getEdges() 
+        Digraph such that [] == self.getNodes(), {} == self.getEdges() and {} == self.getEdgesInfo()
         """
         self._nodes = []
         self._edges = {}
         self._edgesInfo = {}
+    
+    def getNodes(self):
+        """
+        Gets the list of Nodes objects
+        """
+        return self._nodes
+    
+    def getEdges(self):
+        """
+        Gets the dictionary of Edges objects
+        """
+        return self._edges
+    
+    def getEdgesInfo(self):
+        """
+        Gets the dictionary of EdgesInfo
+        """
+        return self._edgesInfo
 
-        
+    def setNodes(self,newNodes):
+        """
+        Sets self._nodes new value.
+
+        Requires:
+        newNodes is list
+        Ensures:
+        self.getNodes() == newNodes
+        """
+        self._nodes = newNodes
+
+    def setEdges(self,newEdges):
+        """
+        Sets self._edges new value.
+
+        Requires:
+        newEdges is dictionary
+        Ensures:
+        self.getEdges() == newEdges
+        """
+        self._edges = newEdges
+
+    def setEdgesInfo(self,newEdgesInfo):
+        """
+        Sets self._edgesInfo new value.
+
+        Requires:
+        newEdgesInfo is dictionary
+        Ensures:
+        self.getEdgesInfo() == newEdgesInfo
+        """
+        self._edgesInfo = newEdgesInfo
+
     def addNode(self, node):
         """
         Adds a Node
@@ -117,9 +247,10 @@ class Digraph(object):
             self._nodes.append(str(node))
             self._edges[str(node)] = []
             self._edgesInfo[str(node)] = []
-
-            
+         
     def addEdge(self, edge):
+        """
+        """
         src = edge.getSource()
         dest = edge.getDestination()
         time = edge.getTime()
@@ -129,17 +260,20 @@ class Digraph(object):
         
         self._edges[src].append(dest)
         self._edgesInfo[src].append((dest, time))
-
-        
+     
     def childrenOf(self, node):
+        """
+        """
         return self._edges[str(node)]
-
-    
+  
     def hasNode(self, node):
+        """
+        """
         return node in self._nodes
 
-
     def __str__(self):
+        """
+        """
         result = ''
         for src in self._nodes:
             for dest in self._edges[src]:
@@ -147,13 +281,16 @@ class Digraph(object):
         return result
 
 
+
 class Graph(Digraph):
     def addEdge(self, edge):
+        """
+        """
         Digraph.addEdge(self, edge)
         rev = Edge(edge.getDestination(), edge.getSource())
         Digraph.addEdge(self, rev)
 
-        
+
 
 def printPath(path):
     """
@@ -164,7 +301,6 @@ def printPath(path):
     Ensures:
     string whith nodes' names concatenated by '->'
     """
-
     result = ''
     for i in range(len(path)):
         result = result + str(path[i])
@@ -185,7 +321,6 @@ def DFS(graph, start, end, path, shortest, acumulate, lista):
     Ensures:
     a shortest path from start to end in graph
     """
-
     path = path + [start]
 
     if len(path)>1:
@@ -220,7 +355,6 @@ def search(graph, start, end):
     Ensures:
     shortest path from start to end in graph
     """  
-
     return DFS(graph, start, end, [], None, 0, {})
 
 
@@ -229,7 +363,6 @@ def testSP():
     """
     Function to test search in a graph with a specific example
     """
-    
     file=open(sys.argv[1], "r")
     network=[]
     for line in file:
