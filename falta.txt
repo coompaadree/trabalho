@@ -1,0 +1,12 @@
+dúvidas:
+433 - #meter as duas "out of the network" ou só uma?
+
+
+
+falta:
+
+ - limpar/rever código (mudar nome das variáveis finais, espaços das linhas, etc...)
+
+ - fazer especificações
+
+       
