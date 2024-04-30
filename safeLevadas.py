@@ -268,8 +268,8 @@ class Digraph(object):
         self.getEdgesInfo() == newEdgesInfo
         """
         self._edgesInfo = newEdgesInfo
-           
-            
+
+
     def addEdge(self, edge):
         src = edge.getSource()
         dest = edge.getDestination()
@@ -325,7 +325,7 @@ def printPath(path):
 
 
 
-def DFS(graph, start, end, path, shortest, acumulate, lista):
+def DFS(graph, start, end, path, shortest, acumulate, solutions):
     """
     Depth first search in a directed graph
 
@@ -346,20 +346,25 @@ def DFS(graph, start, end, path, shortest, acumulate, lista):
                 acumulate = acumulate+int(item[1])
         
         if path[-1]==end:
-            lista[path]=acumulate
+            solutions[path]=acumulate
 
     path=list(path)
     for node in graph.childrenOf(start):
 
         if node not in path:
 
-            if shortest == None or len(path)<len(path): 
-                newPath = DFS(graph, node, end, path, shortest, acumulate, lista)[0]
+            newPath = DFS(graph, node, end, path, shortest, acumulate, solutions)[0]
                 
-                if newPath != None: 
-                    shortest = newPath
+            if newPath != None: 
+                shortest = newPath
 
-    return shortest, lista
+    if len(solutions) > 3:
+        solutions = sorted(solutions.items(), key=lambda item: item[1])
+        while len(solutions) > 3:
+            del solutions[3]
+        solutions=dict(solutions)
+        
+    return shortest, solutions
 
 
 
@@ -420,41 +425,57 @@ def testSP():
         base=element[2]
         for item in base:
             g.addEdge(Edge(element[0],item[0], item[1]))
-    
+
     file=open(sys.argv[3], "w")
     for element in connections:
-        sp = search(g, nodes[nodes.index(networkInfo[element[0]])], nodes[nodes.index(networkInfo[element[1]])])
-        info=list(sorted(sp[1].items()))
+        
+        if element[0] not in networkInfo or element[1] not in networkInfo:    #meter as duas ou só uma?
+            file.write("# " + element[0] + " - " + element[1] + "\n")
+            if element[0] not in networkInfo:
+                file.write(str(element[0]) + " out of the network"  + "\n")
+                print(element[0], "out of the network")
+
+            if element[1] not in networkInfo:
+                file.write(str(element[1]) + " out of the network"  + "\n")
+                print(element[1], "out of the network")
+
+        else:
+            sp = search(g, nodes[nodes.index(networkInfo[element[0]])], nodes[nodes.index(networkInfo[element[1]])])
+            info=list(sorted(sp[1].items()))
             
+            if info==[]:
+                file.write("# " + element[0] + " - " + element[1] + "\n")
+                file.write(str(element[0]) + " and " + str(element[1]) + " do not communicate"  + "\n")
+                print(str(element[0]) + " and " + str(element[1]) + " do not communicate")
 
-        file.write("# " + element[0] + " - " + element[1] + "\n")
-        smallList=[]
+            else:
+                file.write("# " + element[0] + " - " + element[1] + "\n")
+                smallList=[]
+                
+                for elem in range(0, len(info), 1):
+                    smallList.append([info[elem][1], info[elem][0]])
+
+                smallList=sorted(smallList, key=lambda x: x[0])
+                for el in range(0, len(smallList), 1):
+                    for it in range(0, len(smallList[el][1]), 1):
+                        smallList[el].append(smallList[el][1][it])
+
+                    del smallList[el][1]
+
+                    for num in range(1, len(smallList[el]), 1):
+                        smallList[el][num]
+                        for key, value in networkInfo.items():
+                            if smallList[el][num]==value:
+                                smallList[el][num]=key
         
-        for elem in range(0, len(info), 1):
-            smallList.append([info[elem][1], info[elem][0]])
-
-        smallList=sorted(smallList, key=lambda x: x[0])
-        for el in range(0, len(smallList), 1):
-            for it in range(0, len(smallList[el][1]), 1):
-                smallList[el].append(smallList[el][1][it])
-
-            del smallList[el][1]
-
-            for num in range(1, len(smallList[el]), 1):
-                smallList[el][num]
-                for key, value in networkInfo.items():
-                    if smallList[el][num]==value:
-                        smallList[el][num]=key
-                        
-            if el<3:
-                for ite in range(0, len(smallList[el]),1):
-                    if ite==len(smallList[el])-1:
-                        file.write(str(smallList[el][ite]))
-                    else:
-                        file.write(str(smallList[el][ite]) + ", ")
-                file.write(str("\n"))
-        
-        print('Shortest path found by DFS:', smallList[0])
+                    for ite in range(0, len(smallList[el]),1):
+                        if ite==len(smallList[el])-1:
+                            file.write(str(smallList[el][ite]))
+                        else:
+                            file.write(str(smallList[el][ite]) + ", ")
+                    file.write(str("\n"))
+                
+                print('Shortest path found by DFS:', smallList[0])
 
     file.close()
 
