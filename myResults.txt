@@ -1,23 +1,20 @@
 # Seixal - Alcobaça
-19, ['A', 'C', 'G']
-26, ['A', 'B', 'E', 'G']
-30, ['A', 'C', 'B', 'E', 'G']
-42, ['A', 'C', 'B', 'F', 'E', 'G']
-59, ['A', 'D', 'C', 'B', 'F', 'E', 'G']
+19, Seixal, Queimadas, Alforninha, Alcobaça
+19, Seixal, Queimadas, Alcobaça
+26, Seixal, Pico Ruivo, Alforninha, Alcobaça
 # Alforninha - Seixal
-45, ['E', 'G', 'D', 'C', 'A']
-57, ['E', 'G', 'D', 'C', 'B', 'A']
+33, Alforninha, Ponta do Pargo, Queimadas, Seixal
+45, Alforninha, Ponta do Pargo, Queimadas, Pico Ruivo, Seixal
+45, Alforninha, Alcobaça, Ponta do Pargo, Queimadas, Seixal
 # Junqueira - Pico Ruivo
-39, ['F', 'E', 'D', 'C', 'B']
-51, ['F', 'E', 'G', 'D', 'C', 'B']
-63, ['F', 'E', 'G', 'D', 'C', 'A', 'B']
+39, Junqueira, Alforninha, Ponta do Pargo, Queimadas, Pico Ruivo
+47, Junqueira, Alcobaça, Ponta do Pargo, Queimadas, Pico Ruivo
+51, Junqueira, Alforninha, Ponta do Pargo, Queimadas, Seixal, Pico Ruivo
 # Alcobaça - Queimadas
-33, ['G', 'E', 'D', 'C']
-41, ['G', 'F', 'E', 'D', 'C']
+29, Alcobaça, Ponta do Pargo, Queimadas
+33, Alcobaça, Alforninha, Ponta do Pargo, Queimadas
+41, Alcobaça, Junqueira, Alforninha, Ponta do Pargo, Queimadas
 # Seixal - Junqueira
-24, ['A', 'B', 'F']
-25, ['A', 'F']
-28, ['A', 'C', 'B', 'F']
-36, ['A', 'B', 'E', 'G', 'F']
-40, ['A', 'C', 'B', 'E', 'G', 'F']
-57, ['A', 'D', 'C', 'B', 'E', 'G', 'F']
+24, Seixal, Pico Ruivo, Junqueira
+25, Seixal, Junqueira
+28, Seixal, Queimadas, Pico Ruivo, Junqueira

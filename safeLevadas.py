@@ -1,6 +1,6 @@
+
 import sys
 import ast
-
 
 
 class Node(object):
@@ -19,12 +19,14 @@ class Node(object):
         """
         self._name = name
 
+        
     def getName(self):
         """
         Gets the name
         """
         return self._name
-    
+
+
     def setName(self,newName):
         """
         Sets self._name new value.
@@ -36,6 +38,7 @@ class Node(object):
         """
         self._name = newName
 
+
     def __eq__ (self, otherNode):
         """
         Compares two Node objects attributes.
@@ -46,6 +49,7 @@ class Node(object):
         """
         return self.getName()==otherNode.getName()
 
+
     def __lt__(self, otherNode):
         """
         Compares two Node objects attributes.
@@ -55,13 +59,14 @@ class Node(object):
         of _name attribute of both Node objects by node's name
         """
         return self.getName()<otherNode.getName()
+    
 
     def __str__(self):
         """
         String representation
         """
         return self._name
-    
+
 
 
 class Edge(object):
@@ -74,13 +79,14 @@ class Edge(object):
         Constructs an Edge
         
         Requires:
-        src and dst Nodes, time is a int(?)
+        src and dst Nodes
         Ensures:
-        Edge such that src == self.getSource() and dest == self.getDestination() and time == self.getTime() 
+        Edge such that src == self.getSource() and dest == self.getDestination() 
         """
         self._src = src
         self._dest = dest
         self._time = time
+
         
     def getSource(self):
         """
@@ -88,17 +94,20 @@ class Edge(object):
         """
         return self._src
 
+    
     def getDestination(self):
         """
         Gets the destination Node
         """
         return self._dest
+    
 
     def getTime(self):
         """
-        Gets the time Node
+        Gets the destination Node
         """
         return self._time
+    
 
     def setSource(self,newSource):
         """
@@ -111,6 +120,7 @@ class Edge(object):
         """
         self._src = newSource
 
+
     def setDestination(self,newDestination):
         """
         Sets self._dest new value.
@@ -122,6 +132,7 @@ class Edge(object):
         """
         self._dest = newDestination
 
+
     def setTime(self,newTime):
         """
         Sets self._time new value.
@@ -132,6 +143,7 @@ class Edge(object):
         self.getTime() == newTime
         """
         self._time = newTime
+
 
     def __eq__ (self, otherEdge):
         """
@@ -145,6 +157,7 @@ class Edge(object):
               self.getDestination()==otherEdge.getDestination() and\
               self.getTime()==otherEdge.getTime()
 
+
     def __lt__(self, otherEdge):
         """
         Compares two Edge objects attributes.
@@ -154,6 +167,7 @@ class Edge(object):
         of _time attribute of Edge Node objects by node's name
         """
         return self.getTime()==otherEdge.getTime()
+
 
     def __str__(self):
         """
@@ -174,63 +188,13 @@ class Digraph(object):
         
         Ensures:
         empty Digraph, i.e.
-        Digraph such that [] == self.getNodes(), {} == self.getEdges() and {} == self.getEdgesInfo()
+        Digraph such that [] == self.getNodes() and {} == self.getEdges() 
         """
         self._nodes = []
         self._edges = {}
         self._edgesInfo = {}
-    
-    def getNodes(self):
-        """
-        Gets the list of Nodes objects
-        """
-        return self._nodes
-    
-    def getEdges(self):
-        """
-        Gets the dictionary of Edges objects
-        """
-        return self._edges
-    
-    def getEdgesInfo(self):
-        """
-        Gets the dictionary of EdgesInfo
-        """
-        return self._edgesInfo
 
-    def setNodes(self,newNodes):
-        """
-        Sets self._nodes new value.
-
-        Requires:
-        newNodes is list
-        Ensures:
-        self.getNodes() == newNodes
-        """
-        self._nodes = newNodes
-
-    def setEdges(self,newEdges):
-        """
-        Sets self._edges new value.
-
-        Requires:
-        newEdges is dictionary
-        Ensures:
-        self.getEdges() == newEdges
-        """
-        self._edges = newEdges
-
-    def setEdgesInfo(self,newEdgesInfo):
-        """
-        Sets self._edgesInfo new value.
-
-        Requires:
-        newEdgesInfo is dictionary
-        Ensures:
-        self.getEdgesInfo() == newEdgesInfo
-        """
-        self._edgesInfo = newEdgesInfo
-
+        
     def addNode(self, node):
         """
         Adds a Node
@@ -247,10 +211,66 @@ class Digraph(object):
             self._nodes.append(str(node))
             self._edges[str(node)] = []
             self._edgesInfo[str(node)] = []
-         
+
+
+    def getNodes(self):
+        """
+        Gets the list of Nodes objects
+        """
+        return self._nodes
+    
+
+    def getEdges(self):
+        """
+        Gets the dictionary of Edges objects
+        """
+        return self._edges
+    
+
+    def getEdgesInfo(self):
+        """
+        Gets the dictionary of EdgesInfo
+        """
+        return self._edgesInfo
+
+
+    def setNodes(self,newNodes):
+        """
+        Sets self._nodes new value.
+
+        Requires:
+        newNodes is list
+        Ensures:
+        self.getNodes() == newNodes
+        """
+        self._nodes = newNodes
+
+
+    def setEdges(self,newEdges):
+        """
+        Sets self._edges new value.
+
+        Requires:
+        newEdges is dictionary
+        Ensures:
+        self.getEdges() == newEdges
+        """
+        self._edges = newEdges
+
+
+    def setEdgesInfo(self,newEdgesInfo):
+        """
+        Sets self._edgesInfo new value.
+
+        Requires:
+        newEdgesInfo is dictionary
+        Ensures:
+        self.getEdgesInfo() == newEdgesInfo
+        """
+        self._edgesInfo = newEdgesInfo
+           
+            
     def addEdge(self, edge):
-        """
-        """
         src = edge.getSource()
         dest = edge.getDestination()
         time = edge.getTime()
@@ -260,20 +280,17 @@ class Digraph(object):
         
         self._edges[src].append(dest)
         self._edgesInfo[src].append((dest, time))
-     
+
+        
     def childrenOf(self, node):
-        """
-        """
         return self._edges[str(node)]
-  
+
+    
     def hasNode(self, node):
-        """
-        """
         return node in self._nodes
 
+
     def __str__(self):
-        """
-        """
         result = ''
         for src in self._nodes:
             for dest in self._edges[src]:
@@ -281,16 +298,13 @@ class Digraph(object):
         return result
 
 
-
 class Graph(Digraph):
     def addEdge(self, edge):
-        """
-        """
         Digraph.addEdge(self, edge)
         rev = Edge(edge.getDestination(), edge.getSource())
         Digraph.addEdge(self, rev)
 
-
+        
 
 def printPath(path):
     """
@@ -301,6 +315,7 @@ def printPath(path):
     Ensures:
     string whith nodes' names concatenated by '->'
     """
+
     result = ''
     for i in range(len(path)):
         result = result + str(path[i])
@@ -321,7 +336,9 @@ def DFS(graph, start, end, path, shortest, acumulate, lista):
     Ensures:
     a shortest path from start to end in graph
     """
+
     path = path + [start]
+    path=tuple(path)
 
     if len(path)>1:
         for item in graph._edgesInfo.get(path[len(path)-2]):
@@ -329,8 +346,9 @@ def DFS(graph, start, end, path, shortest, acumulate, lista):
                 acumulate = acumulate+int(item[1])
         
         if path[-1]==end:
-            lista[acumulate]=path
+            lista[path]=acumulate
 
+    path=list(path)
     for node in graph.childrenOf(start):
 
         if node not in path:
@@ -355,6 +373,7 @@ def search(graph, start, end):
     Ensures:
     shortest path from start to end in graph
     """  
+
     return DFS(graph, start, end, [], None, 0, {})
 
 
@@ -363,6 +382,7 @@ def testSP():
     """
     Function to test search in a graph with a specific example
     """
+    
     file=open(sys.argv[1], "r")
     network=[]
     for line in file:
@@ -405,34 +425,37 @@ def testSP():
     for element in connections:
         sp = search(g, nodes[nodes.index(networkInfo[element[0]])], nodes[nodes.index(networkInfo[element[1]])])
         info=list(sorted(sp[1].items()))
-
-
-        count=0
-        for itens in info:
-            if count==0:
-                minLen=100
-                maxLen=0
-                count=1
-            elif len(itens[1])<minLen:
-                minLen=len(itens[1])
-
-            elif len(itens[1])>maxLen:
-                maxLen=len(itens[1])
             
 
         file.write("# " + element[0] + " - " + element[1] + "\n")
         smallList=[]
-        for item in range(minLen, maxLen+1, 1):
-            for elem in range(0, len(info), 1):
-
-                if len(info[elem][1])==item:
-                    smallList.append([info[elem][0], info[elem][1]])
-                    break
         
+        for elem in range(0, len(info), 1):
+            smallList.append([info[elem][1], info[elem][0]])
+
         smallList=sorted(smallList, key=lambda x: x[0])
         for el in range(0, len(smallList), 1):
-            file.write(str(smallList[el][0]) + ", " + str(smallList[el][1]) + "\n")
-            
-        print('Shortest path found by DFS:', info[0])
+            for it in range(0, len(smallList[el][1]), 1):
+                smallList[el].append(smallList[el][1][it])
+
+            del smallList[el][1]
+
+            for num in range(1, len(smallList[el]), 1):
+                smallList[el][num]
+                for key, value in networkInfo.items():
+                    if smallList[el][num]==value:
+                        smallList[el][num]=key
+                        
+            if el<3:
+                for ite in range(0, len(smallList[el]),1):
+                    if ite==len(smallList[el])-1:
+                        file.write(str(smallList[el][ite]))
+                    else:
+                        file.write(str(smallList[el][ite]) + ", ")
+                file.write(str("\n"))
+        
+        print('Shortest path found by DFS:', smallList[0])
+
+    file.close()
 
 testSP()
