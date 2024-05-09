@@ -4,7 +4,6 @@
 # 62224 André Alexandre
 
 import sys
-import ast
 
 
 class Node(object):
@@ -432,7 +431,7 @@ def testSP():
         conected=line.rstrip()
         index=conected.index("[")
         conected=conected[index:].replace("),", ");").replace("(", """('""").replace(")", """')""").replace(", ", """', '""").replace(";", ",")
-        conected = ast.literal_eval(conected)
+        conected = eval(conected)
         network.append([id, name, conected])
     file.close()
 
@@ -506,6 +505,27 @@ def testSP():
                         for key, value in networkInfo.items():
                             if smallList[el][num]==value:
                                 smallList[el][num]=key
+
+
+
+                    repeated={}
+                    repeatedList=[]
+                    for i in range(0, len(smallList), 1):
+                        repeated[i] = smallList[i][0]
+                        repeatedList.append(smallList[i][0])
+
+                    repeat=[]
+                    for al in range(0, len(repeatedList), 1):
+                        for el in range(0, len(repeatedList), 1):
+                            if al != el and repeatedList[al] == repeatedList[el]:
+                                if repeatedList[al] not in repeat:
+                                    repeat.append(repeatedList[al])
+
+
+                    
+
+                    
+                        
         
                     for ite in range(0, len(smallList[el]),1):
                         if ite==len(smallList[el])-1:

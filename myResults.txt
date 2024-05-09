@@ -1,14 +1,14 @@
 # Seixal - Alforninha
-12, Seixal, Queimadas, Alforninha
-20, Seixal, Pico Ruivo, Alforninha
-27, Seixal, Queimadas, Ponta do Pargo, Junqueira, Alameda, Pico Ruivo, Alforninha
+32, ('A', 'C', 'D', 'F', 'B', 'E')
+32, ('A', 'C', 'D', 'F', 'B', 'E')
+32, Seixal, Queimadas, Ponta do Pargo, Junqueira, Pico Ruivo, Alforninha
 # Alforninha - Ponta do Pargo
-11, Alforninha, Queimadas, Ponta do Pargo
-21, Alforninha, Pico Ruivo, Ponta do Pargo
+43, ('E', 'C', 'A', 'B', 'D')
+43, ('E', 'C', 'A', 'B', 'D')
 43, Alforninha, Queimadas, Seixal, Pico Ruivo, Ponta do Pargo
 # Junqueira - Pico Ruivo
-3, Junqueira, Alameda, Pico Ruivo
-8, Junqueira, Pico Ruivo
+8, ('F', 'M', 'B')
+8, Junqueira, Alameda, Pico Ruivo
 # Cabeça - Leiria
 Cabeça out of the network
 Leiria out of the network
