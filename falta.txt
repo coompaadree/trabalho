@@ -19,5 +19,3 @@ falta:
 * um só com a exceção de "X out of the network"
 
 Já temos um test set sem exceções (test1) e um test set com as duas exceções (test2)
-
-- construir um test set que só dê 2 caminhos possíveis, num dos casos (para ver se está corretamente ordenado)

@@ -394,13 +394,13 @@ def DFS(graph, start, end, path, shortest, acumulate, solutions):
             if newPath != None: 
                 shortest = newPath
 
-    if len(solutions) > 3:
+    if len(solutions) > 0:
         solutions = sorted(solutions.items(), key=lambda item: item[1])
         while len(solutions) > 3:
             del solutions[3]
         solutions=dict(solutions)
     
-    print(solutions)
+    #print(solutions)
     return shortest, solutions
 
 
@@ -479,7 +479,7 @@ def testSP():
         else:
             sp = search(g, nodes[nodes.index(networkInfo[element[0]])], \
                          nodes[nodes.index(networkInfo[element[1]])])
-            info=list(sorted(sp[1].items()))
+            info=list(sp[1].items())
             
             if info==[]:
                 file.write("# " + element[0] + " - " + element[1] + "\n")
@@ -495,7 +495,6 @@ def testSP():
                 for elem in range(0, len(info), 1):
                     smallList.append([info[elem][1], info[elem][0]])
 
-                smallList=sorted(smallList, key=lambda x: x[0])
                 for el in range(0, len(smallList), 1):
                     for it in range(0, len(smallList[el][1]), 1):
                         smallList[el].append(smallList[el][1][it])
