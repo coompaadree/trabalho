@@ -1,3 +1,7 @@
+# 2023-2024 Programacao 2 LTI
+# Grupo 3
+# 58000 Ana Rita Nicolau
+# 62224 André Alexandre
 
 import sys
 import ast
@@ -149,7 +153,7 @@ class Edge(object):
         """
         Compares two Edge objects attributes.
         
-        Requires: otherNode is Edge object
+        Requires: otherEdge is Edge object
         Ensures: A boolean value obtained from the equality comparison of
         _src, _dest and _time attribute of both Edge objects
         """
@@ -162,7 +166,7 @@ class Edge(object):
         """
         Compares two Edge objects attributes.
         
-        Requires: otherNode is Edge object
+        Requires: otherEdge is Edge object
         Ensures: A boolean value obtained from the less than comparison
         of _time attribute of Edge Node objects by node's name
         """
@@ -188,29 +192,12 @@ class Digraph(object):
         
         Ensures:
         empty Digraph, i.e.
-        Digraph such that [] == self.getNodes() and {} == self.getEdges() 
+        Digraph such that [] == self.getNodes() and {} == self.getEdges() and
+        {} == self.getEdgesInfo()
         """
         self._nodes = []
         self._edges = {}
         self._edgesInfo = {}
-
-        
-    def addNode(self, node):
-        """
-        Adds a Node
-        
-        Requires:
-        node is Node not in the digraph yet
-        Ensures:
-        getNodes() == getNodes()@pre.append(node)
-        getEdges[node] == [] 
-        """
-        if node in self._nodes:
-            raise ValueError('Duplicate node')
-        else:
-            self._nodes.append(str(node))
-            self._edges[str(node)] = []
-            self._edgesInfo[str(node)] = []
 
 
     def getNodes(self):
@@ -270,7 +257,35 @@ class Digraph(object):
         self._edgesInfo = newEdgesInfo
 
 
+    def addNode(self, node):
+        """
+        Adds a Node
+        
+        Requires:
+        node is Node not in the digraph yet
+        Ensures:
+        getNodes() == getNodes()@pre.append(node)
+        getEdges[node] == []
+        getEdgesInfo[node] == []
+        """
+        if node in self._nodes:
+            raise ValueError('Duplicate node')          # TESTAR !!!
+        else:
+            self._nodes.append(str(node))
+            self._edges[str(node)] = []
+            self._edgesInfo[str(node)] = []
+
+
     def addEdge(self, edge):
+        """
+        Adds an Edge and its time
+        
+        Requires:
+        edge is Edge not in the digraph yet
+        Ensures:
+        getEdges[node] == dest                          TESTAR !!!
+        getEdgesInfo[node] == (dest,time)               TESTAR !!!
+        """
         src = edge.getSource()
         dest = edge.getDestination()
         time = edge.getTime()
@@ -283,14 +298,33 @@ class Digraph(object):
 
         
     def childrenOf(self, node):
+        """
+        Children nodes of node
+
+        Requires:
+        node is Node object
+        Ensures:
+        node belonging to the path (that starts in the node node)   not sure???
+        """
         return self._edges[str(node)]
 
     
     def hasNode(self, node):
+        """
+        f
+
+        Requires:
+
+        Ensures:
+        
+        """
         return node in self._nodes
 
 
     def __str__(self):
+        """
+        String representation under the format: A->B                correto???
+        """
         result = ''
         for src in self._nodes:
             for dest in self._edges[src]:
@@ -298,8 +332,21 @@ class Digraph(object):
         return result
 
 
+
 class Graph(Digraph):
+    """
+    Class of Graphs
+    """
+
     def addEdge(self, edge):
+        """
+        Adds an Edge
+        
+        Requires:
+        edge is Edge not in the graph yet
+        Ensures:
+                                                                POR FAZER
+        """
         Digraph.addEdge(self, edge)
         rev = Edge(edge.getDestination(), edge.getSource())
         Digraph.addEdge(self, rev)
@@ -315,7 +362,6 @@ def printPath(path):
     Ensures:
     string whith nodes' names concatenated by '->'
     """
-
     result = ''
     for i in range(len(path)):
         result = result + str(path[i])
@@ -330,15 +376,16 @@ def DFS(graph, start, end, path, shortest, acumulate, solutions):
     Depth first search in a directed graph
 
     Requires:
-    graph a Digraph;
-    start and end nodes;
-    path and shortest lists of nodes
+    graph is a Digraph;
+    start and end are nodes;
+    path and shortest are lists of nodes
+    acumulate is int
+    solutions is dictionary
     Ensures:
-    a shortest path from start to end in graph
+    the three fastest paths from start to end in graph
     """
-
     path = path + [start]
-    path=tuple(path)
+    path = tuple(path)
 
     if len(path)>1:
         for item in graph._edgesInfo.get(path[len(path)-2]):
@@ -353,7 +400,8 @@ def DFS(graph, start, end, path, shortest, acumulate, solutions):
 
         if node not in path:
 
-            newPath = DFS(graph, node, end, path, shortest, acumulate, solutions)[0]
+            newPath = DFS(graph, node, end, path, shortest, \
+                          acumulate, solutions)[0]
                 
             if newPath != None: 
                 shortest = newPath
@@ -363,7 +411,8 @@ def DFS(graph, start, end, path, shortest, acumulate, solutions):
         while len(solutions) > 3:
             del solutions[3]
         solutions=dict(solutions)
-        
+    
+    print(solutions)
     return shortest, solutions
 
 
@@ -377,8 +426,7 @@ def search(graph, start, end):
     start and end are nodes
     Ensures:
     shortest path from start to end in graph
-    """  
-
+    """
     return DFS(graph, start, end, [], None, 0, {})
 
 
@@ -429,7 +477,8 @@ def testSP():
     file=open(sys.argv[3], "w")
     for element in connections:
         
-        if element[0] not in networkInfo or element[1] not in networkInfo:    #meter as duas ou só uma?
+        if element[0] not in networkInfo or element[1] not in networkInfo:  
+            #meter as duas ou só uma?
             file.write("# " + element[0] + " - " + element[1] + "\n")
             if element[0] not in networkInfo:
                 file.write(str(element[0]) + " out of the network"  + "\n")
@@ -440,13 +489,16 @@ def testSP():
                 print(element[1], "out of the network")
 
         else:
-            sp = search(g, nodes[nodes.index(networkInfo[element[0]])], nodes[nodes.index(networkInfo[element[1]])])
+            sp = search(g, nodes[nodes.index(networkInfo[element[0]])], \
+                         nodes[nodes.index(networkInfo[element[1]])])
             info=list(sorted(sp[1].items()))
             
             if info==[]:
                 file.write("# " + element[0] + " - " + element[1] + "\n")
-                file.write(str(element[0]) + " and " + str(element[1]) + " do not communicate"  + "\n")
-                print(str(element[0]) + " and " + str(element[1]) + " do not communicate")
+                file.write(str(element[0]) + " and " + str(element[1]) + \
+                           " do not communicate"  + "\n")
+                print(str(element[0]) + " and " + str(element[1]) + \
+                      " do not communicate")
 
             else:
                 file.write("# " + element[0] + " - " + element[1] + "\n")
