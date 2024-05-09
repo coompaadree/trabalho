@@ -269,7 +269,7 @@ class Digraph(object):
         getEdgesInfo[node] == []
         """
         if node in self._nodes:
-            raise ValueError('Duplicate node')          # TESTAR !!!
+            raise ValueError('Duplicate node')
         else:
             self._nodes.append(str(node))
             self._edges[str(node)] = []
@@ -283,8 +283,8 @@ class Digraph(object):
         Requires:
         edge is Edge not in the digraph yet
         Ensures:
-        getEdges[node] == dest                          TESTAR !!!
-        getEdgesInfo[node] == (dest,time)               TESTAR !!!
+        getEdges[node] == dest                          a alterar !!!
+        getEdgesInfo[node] == (dest,time)               a alterar !!!
         """
         src = edge.getSource()
         dest = edge.getDestination()
@@ -304,26 +304,14 @@ class Digraph(object):
         Requires:
         node is Node object
         Ensures:
-        node belonging to the path (that starts in the node node)   not sure???
+        node belonging to the path (that starts in the node node)   é mas fazer depois???
         """
         return self._edges[str(node)]
-
-    
-    def hasNode(self, node):
-        """
-        f
-
-        Requires:
-
-        Ensures:
-        
-        """
-        return node in self._nodes
 
 
     def __str__(self):
         """
-        String representation under the format: A->B                correto???
+        String representation under the format: A->B           # qt mt acrescentávamos o tempo entre estações
         """
         result = ''
         for src in self._nodes:
@@ -348,8 +336,8 @@ class Graph(Digraph):
                                                                 POR FAZER
         """
         Digraph.addEdge(self, edge)
-        rev = Edge(edge.getDestination(), edge.getSource())
-        Digraph.addEdge(self, rev)
+        #rev = Edge(edge.getDestination(), edge.getSource())
+        #Digraph.addEdge(self, rev)                             #nao esta a mudar nada
 
         
 
