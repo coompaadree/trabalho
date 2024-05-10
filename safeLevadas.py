@@ -469,11 +469,9 @@ def testSP():
             file.write("# " + element[0] + " - " + element[1] + "\n")
             if element[0] not in networkInfo:
                 file.write(str(element[0]) + " out of the network"  + "\n")
-                print(element[0], "out of the network")
 
             if element[1] not in networkInfo:
                 file.write(str(element[1]) + " out of the network"  + "\n")
-                print(element[1], "out of the network")
 
         else:
             sp = search(g, nodes[nodes.index(networkInfo[element[0]])], \
@@ -484,8 +482,6 @@ def testSP():
                 file.write("# " + element[0] + " - " + element[1] + "\n")
                 file.write(str(element[0]) + " and " + str(element[1]) + \
                            " do not communicate"  + "\n")
-                print(str(element[0]) + " and " + str(element[1]) + \
-                      " do not communicate")
 
             else:
                 file.write("# " + element[0] + " - " + element[1] + "\n")
@@ -508,6 +504,8 @@ def testSP():
 
 
 
+
+
                     repeated={}
                     repeatedList=[]
                     for i in range(0, len(smallList), 1):
@@ -515,27 +513,47 @@ def testSP():
                         repeatedList.append(smallList[i][0])
 
                     repeat=[]
+                    newSmall=[]
+                    rest = {}
                     for al in range(0, len(repeatedList), 1):
-                        for el in range(0, len(repeatedList), 1):
-                            if al != el and repeatedList[al] == repeatedList[el]:
+                        for rl in range(0, len(repeatedList), 1):
+                            if al != rl and repeatedList[al] == repeatedList[rl]:
                                 if repeatedList[al] not in repeat:
                                     repeat.append(repeatedList[al])
 
 
-                    
-
-                    
+                    if len(repeat) == 1:      #pois é impossível ser mais do que um
+                        for iko in range(0, len(repeated), 1):
+                            if repeat[0] != repeated[iko]:
+                                repeated.pop(iko)
+                                rest[iko]=smallList[iko]
                         
-        
-                    for ite in range(0, len(smallList[el]),1):
-                        if ite==len(smallList[el])-1:
-                            file.write(str(smallList[el][ite]))
-                        else:
-                            file.write(str(smallList[el][ite]) + ", ")
-                    file.write(str("\n"))
-                
-                print('Shortest path found by DFS:', smallList[0])
+                        for ik in repeated:
+                            if repeat[0] == repeated[ik]:
+                                repeated[ik] = len(smallList[int(ik)])-1
 
+                        repeated = sorted(repeated.items(), key=lambda item: item[1])
+                        repeated.reverse()
+                        
+                        for u in range(0, len(repeated), 1):
+                            newSmall.insert(u, smallList[repeated[u][0]])
+
+                        for un in rest:
+                            newSmall.insert(un, rest[un])
+                        smallList = newSmall
+
+
+
+
+
+                for ele in range(0, len(smallList), 1):
+                    for ite in range(0, len(smallList[ele]),1):
+                        if ite==len(smallList[ele])-1:
+                            file.write(str(smallList[ele][ite]))
+                        else:
+                            file.write(str(smallList[ele][ite]) + ", ")
+                    file.write(str("\n"))
+             
     file.close()
 
 testSP()
