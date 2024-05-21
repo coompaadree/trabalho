@@ -1,0 +1,9 @@
+Caminho A a B
+
+X 1 - A a B com 3 caminhos possíveis (sem desempates)
+2 - A a B com 2 caminhos possíveis (sem desempates) e C a D com 1 caminho possível (sem desempates), para ver se dá todos os caminhos possíveis quando não há 3 melhores
+X 4 - A a B não comunicam
+X 5 - A não está na rede
+X 6 - A e B não estão na rede
+X 7 - A a B com empate de tempo (ordenação pelo nº estações) e A a B com empate de tempo e nº estações (ordenação por ordem alfabética)
+(Estação Z, Isolada, [] existe no 1 e no 7)
