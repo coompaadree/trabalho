@@ -3,3 +3,6 @@ só existe uma rede e tudo funciona sem quaisquer exceções/rasteiras.
 
 levada 2:
 existem duas redes distintas.
+
+levada 3:
+existem duas redes distintas.
