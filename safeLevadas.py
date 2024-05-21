@@ -4,341 +4,10 @@
 # 62224 André Alexandre
 
 import sys
-
-
-class Node(object):
-    """
-    Class of Nodes
-    """
-    
-    def __init__(self, name):
-        """
-        Constructs a Node
-        
-        Requires:
-        name is a string
-        Ensures:
-        node such that name == self.getName()
-        """
-        self._name = name
-
-        
-    def getName(self):
-        """
-        Gets the name
-        """
-        return self._name
-
-
-    def setName(self,newName):
-        """
-        Sets self._name new value.
-
-        Requires:
-        newName is str
-        Ensures:
-        self.getName() == newName
-        """
-        self._name = newName
-
-
-    def __eq__ (self, otherNode):
-        """
-        Compares two Node objects attributes.
-        
-        Requires: otherNode is Node object
-        Ensures: A boolean value obtained from the equality comparison of
-        _name attribute of both Node objects
-        """
-        return self.getName()==otherNode.getName()
-
-
-    def __lt__(self, otherNode):
-        """
-        Compares two Node objects attributes.
-        
-        Requires: otherNode is Node object
-        Ensures: A boolean value obtained from the less than comparison
-        of _name attribute of both Node objects by node's name
-        """
-        return self.getName()<otherNode.getName()
-    
-
-    def __str__(self):
-        """
-        String representation
-        """
-        return self._name
-
-
-
-class Edge(object):
-    """
-    Class of Edges
-    """
-    
-    def __init__(self, src, dest, time):
-        """
-        Constructs an Edge
-        
-        Requires:
-        src and dst Nodes
-        Ensures:
-        Edge such that src == self.getSource() and dest == self.getDestination() 
-        """
-        self._src = src
-        self._dest = dest
-        self._time = time
-
-        
-    def getSource(self):
-        """
-        Gets the source Node
-        """
-        return self._src
-
-    
-    def getDestination(self):
-        """
-        Gets the destination Node
-        """
-        return self._dest
-    
-
-    def getTime(self):
-        """
-        Gets the destination Node
-        """
-        return self._time
-    
-
-    def setSource(self,newSource):
-        """
-        Sets self._src new value.
-
-        Requires:
-        newSource is str
-        Ensures:
-        self.getSource() == newSource
-        """
-        self._src = newSource
-
-
-    def setDestination(self,newDestination):
-        """
-        Sets self._dest new value.
-
-        Requires:
-        newDestination is str
-        Ensures:
-        self.getDestination() == newDestination
-        """
-        self._dest = newDestination
-
-
-    def setTime(self,newTime):
-        """
-        Sets self._time new value.
-
-        Requires:
-        newTime is str
-        Ensures:
-        self.getTime() == newTime
-        """
-        self._time = newTime
-
-
-    def __eq__ (self, otherEdge):
-        """
-        Compares two Edge objects attributes.
-        
-        Requires: otherEdge is Edge object
-        Ensures: A boolean value obtained from the equality comparison of
-        _src, _dest and _time attribute of both Edge objects
-        """
-        return self.getSource()==otherEdge.getSource() and\
-              self.getDestination()==otherEdge.getDestination() and\
-              self.getTime()==otherEdge.getTime()
-
-
-    def __lt__(self, otherEdge):
-        """
-        Compares two Edge objects attributes.
-        
-        Requires: otherEdge is Edge object
-        Ensures: A boolean value obtained from the less than comparison
-        of _time attribute of Edge Node objects by node's name
-        """
-        return self.getTime()==otherEdge.getTime()
-
-
-    def __str__(self):
-        """
-        String representation
-        """
-        return self._src.getName() + '->' + self._dest.getName()
-
-
-
-class Digraph(object):
-    """
-    Class of Directed Graphs
-    """
-
-    def __init__(self):
-        """
-        Constructs a Directed Graph
-        
-        Ensures:
-        empty Digraph, i.e.
-        Digraph such that [] == self.getNodes() and {} == self.getEdges() and
-        {} == self.getEdgesInfo()
-        """
-        self._nodes = []
-        self._edges = {}
-        self._edgesInfo = {}
-
-
-    def getNodes(self):
-        """
-        Gets the list of Nodes objects
-        """
-        return self._nodes
-    
-
-    def getEdges(self):
-        """
-        Gets the dictionary of Edges objects
-        """
-        return self._edges
-    
-
-    def getEdgesInfo(self):
-        """
-        Gets the dictionary of EdgesInfo
-        """
-        return self._edgesInfo
-
-
-    def setNodes(self,newNodes):
-        """
-        Sets self._nodes new value.
-
-        Requires:
-        newNodes is list
-        Ensures:
-        self.getNodes() == newNodes
-        """
-        self._nodes = newNodes
-
-
-    def setEdges(self,newEdges):
-        """
-        Sets self._edges new value.
-
-        Requires:
-        newEdges is dictionary
-        Ensures:
-        self.getEdges() == newEdges
-        """
-        self._edges = newEdges
-
-
-    def setEdgesInfo(self,newEdgesInfo):
-        """
-        Sets self._edgesInfo new value.
-
-        Requires:
-        newEdgesInfo is dictionary
-        Ensures:
-        self.getEdgesInfo() == newEdgesInfo
-        """
-        self._edgesInfo = newEdgesInfo
-
-
-    def addNode(self, node):
-        """
-        Adds a Node
-        
-        Requires:
-        node is Node not in the digraph yet
-        Ensures:
-        getNodes() == getNodes()@pre.append(node)
-        getEdges[node] == []
-        getEdgesInfo[node] == []
-        """
-        if node in self._nodes:
-            raise ValueError('Duplicate node')
-        else:
-            self._nodes.append(str(node))
-            self._edges[str(node)] = []
-            self._edgesInfo[str(node)] = []
-
-
-    def addEdge(self, edge):
-        """
-        Adds an Edge and its time
-        
-        Requires:
-        edge is Edge not in the digraph yet
-        Ensures:
-        getEdges[node] == dest                          a alterar !!!
-        getEdgesInfo[node] == (dest,time)               a alterar !!!
-        """
-        src = edge.getSource()
-        dest = edge.getDestination()
-        time = edge.getTime()
-
-        if not(src in self._nodes and dest in self._nodes):
-            raise ValueError(src, dest)
-        
-        self._edges[src].append(dest)
-        self._edgesInfo[src].append((dest, time))
-
-        
-    def childrenOf(self, node):
-        """
-        Children nodes of node
-
-        Requires:
-        node is Node object
-        Ensures:
-        node belonging to the path (that starts in the node node)   é mas fazer depois???
-        """
-        return self._edges[str(node)]
-
-
-    def __str__(self):
-        """
-        String representation under the format: A->B           # qt mt acrescentávamos o tempo entre estações
-        """
-        result = ''
-        for src in self._nodes:
-            for dest in self._edges[src]:
-                result = result + src + '->' + dest + '\n'
-        return result
-
-
-
-class Graph(Digraph):
-    """
-    Class of Graphs
-    """
-
-    def addEdge(self, edge):
-        """
-        Adds an Edge
-        
-        Requires:
-        edge is Edge not in the graph yet
-        Ensures:
-                                                                POR FAZER
-        """
-        Digraph.addEdge(self, edge)
-        #rev = Edge(edge.getDestination(), edge.getSource())
-        #Digraph.addEdge(self, rev)                             #nao esta a mudar nada
-
-        
+from Node import Node
+from Edge import Edge
+from Digraph import Digraph
+from Organiser import Organiser
 
 def printPath(path):
     """
@@ -358,7 +27,7 @@ def printPath(path):
 
 
 
-def DFS(graph, start, end, path, shortest, acumulate, solutions):
+def DFS(graph, start, end, networkInfo, path, shortest, acumulate, solutions):
     """
     Depth first search in a directed graph
 
@@ -374,37 +43,37 @@ def DFS(graph, start, end, path, shortest, acumulate, solutions):
     path = path + [start]
     path = tuple(path)
 
+
     if len(path)>1:
         for item in graph._edgesInfo.get(path[len(path)-2]):
             if item[0]==path[len(path)-1]:
                 acumulate = acumulate+int(item[1])
         
         if path[-1]==end:
-            solutions[path]=acumulate
+            solutions = Organiser(solutions, path, acumulate, networkInfo)
+            solutions = solutions.decideAppend()
+
 
     path=list(path)
     for node in graph.childrenOf(start):
 
         if node not in path:
 
-            newPath = DFS(graph, node, end, path, shortest, \
+            newPath = DFS(graph, node, end, networkInfo, path, shortest, \
                           acumulate, solutions)[0]
                 
-            if newPath != None: 
+            if newPath != None:
                 shortest = newPath
-
-    if len(solutions) > 0:
-        solutions = sorted(solutions.items(), key=lambda item: item[1])
-        while len(solutions) > 3:
-            del solutions[3]
-        solutions=dict(solutions)
     
-    #print(solutions)
+    solutions = Organiser(solutions, path, acumulate, networkInfo)
+    solutions = solutions.organiseFinal(False)
+
+
     return shortest, solutions
 
 
 
-def search(graph, start, end):
+def search(graph, start, end, networkInfo):
     """
     Wrapper function to initialize DFS function
 
@@ -414,54 +83,49 @@ def search(graph, start, end):
     Ensures:
     shortest path from start to end in graph
     """
-    return DFS(graph, start, end, [], None, 0, {})
+    return DFS(graph, start, end, networkInfo, [], None, 0, {})
 
 
 
-def testSP():
+def infoFromFiles(filename, type):
     """
-    Function to test search in a graph with a specific example
     """
+    if type ==1:
+        file=open(filename, "r")
+        network=[]
+        first=True
+
+        for line in file:
+            if first==True:
+                first=False
+            else:
+                id=line.rstrip().split(", ")[0]
+                name=line.rstrip().split(", ")[1]
+                conected=line.rstrip()
+                index=conected.index("[")
+                conected=conected[index:].replace("),", ");").replace("(", """('""").replace(")", """')""").replace(", ", """', '""").replace(";", ",")
+                conected = eval(conected)
+                network.append([id, name, conected])
+
+        file.close()
+        return network
+
+    if type == 2:
+        file=open(filename, "r")
+        connections=[]
+
+        for line in file:
+            connections.append(line.rstrip().split(" - "))
+
+        file.close()
+        return connections
     
-    file=open(sys.argv[1], "r")
-    network=[]
-    for line in file:
-        id=line.rstrip().split(", ")[0]
-        name=line.rstrip().split(", ")[1]
-        conected=line.rstrip()
-        index=conected.index("[")
-        conected=conected[index:].replace("),", ");").replace("(", """('""").replace(")", """')""").replace(", ", """', '""").replace(";", ",")
-        conected = eval(conected)
-        network.append([id, name, conected])
-    file.close()
-
-    networkInfo = {}
-    for elem in network:
-        networkInfo[elem[1]]=elem[0]
 
 
-    file=open(sys.argv[2], "r")
-    connections=[]
-    for line in file:
-        connections.append(line.rstrip().split(" - "))
-    file.close()
-
-
-    nodes = []
-    for id in range(len(network)):
-        nodes.append(str(Node(str(network[id][0]))))
-        
-    g = Digraph()
-
-    for n in nodes:
-        g.addNode(n)
-    
-    for element in network:
-        base=element[2]
-        for item in base:
-            g.addEdge(Edge(element[0],item[0], item[1]))
-
-    file=open(sys.argv[3], "w")
+def infoToFiles(filename, connections, networkInfo, nodes, g):
+    """
+    """
+    file=open(filename, "w")
     for element in connections:
         
         if element[0] not in networkInfo or element[1] not in networkInfo:  
@@ -475,7 +139,7 @@ def testSP():
 
         else:
             sp = search(g, nodes[nodes.index(networkInfo[element[0]])], \
-                         nodes[nodes.index(networkInfo[element[1]])])
+                         nodes[nodes.index(networkInfo[element[1]])], networkInfo)
             info=list(sp[1].items())
             
             if info==[]:
@@ -502,50 +166,6 @@ def testSP():
                             if smallList[el][num]==value:
                                 smallList[el][num]=key
 
-
-
-
-
-                    repeated={}
-                    repeatedList=[]
-                    for i in range(0, len(smallList), 1):
-                        repeated[i] = smallList[i][0]
-                        repeatedList.append(smallList[i][0])
-
-                    repeat=[]
-                    newSmall=[]
-                    rest = {}
-                    for al in range(0, len(repeatedList), 1):
-                        for rl in range(0, len(repeatedList), 1):
-                            if al != rl and repeatedList[al] == repeatedList[rl]:
-                                if repeatedList[al] not in repeat:
-                                    repeat.append(repeatedList[al])
-
-
-                    if len(repeat) == 1:      #pois é impossível ser mais do que um
-                        for iko in range(0, len(repeated), 1):
-                            if repeat[0] != repeated[iko]:
-                                repeated.pop(iko)
-                                rest[iko]=smallList[iko]
-                        
-                        for ik in repeated:
-                            if repeat[0] == repeated[ik]:
-                                repeated[ik] = len(smallList[int(ik)])-1
-
-                        repeated = sorted(repeated.items(), key=lambda item: item[1])
-                        repeated.reverse()
-                        
-                        for u in range(0, len(repeated), 1):
-                            newSmall.insert(u, smallList[repeated[u][0]])
-
-                        for un in rest:
-                            newSmall.insert(un, rest[un])
-                        smallList = newSmall
-
-
-
-
-
                 for ele in range(0, len(smallList), 1):
                     for ite in range(0, len(smallList[ele]),1):
                         if ite==len(smallList[ele])-1:
@@ -556,4 +176,39 @@ def testSP():
              
     file.close()
 
+
+
+def testSP():
+    """
+    Function to test search in a graph with a specific example
+    """
+    
+    network=infoFromFiles(sys.argv[1], 1)
+    connections=infoFromFiles(sys.argv[2], 2)
+
+    networkInfo = {}
+    for elem in network:
+        networkInfo[elem[1]]=elem[0]
+    print(networkInfo)
+
+
+    nodes = []
+    for id in range(len(network)):
+        nodes.append(str(Node(str(network[id][0]))))
+        
+    g = Digraph()
+
+    for n in nodes:
+        g.addNode(n)
+    
+    for element in network:
+        base=element[2]
+        for item in base:
+            g.addEdge(Edge(element[0],item[0], item[1]))
+
+    infoToFiles(sys.argv[3], connections, networkInfo, nodes, g)
+    
+
+
+    
 testSP()
