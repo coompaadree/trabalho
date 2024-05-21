@@ -1,5 +1,5 @@
 # Abóbada - Damasco
 12, Abóbada, Caxias, Damasco
 20, Abóbada, Branquinho, Damasco
-# Faro - Guarda
-16, Faro, Esperança, Guarda
+# Branquinho - Iris
+7, Branquinho, Iris
