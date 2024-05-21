@@ -1,1 +1,3 @@
-A a B com 2 caminhos possíveis (sem desempates) e C a D com 1 caminho possível (sem desempates), para ver se dá todos os caminhos possíveis quando não há 3 melhores
+Test set em que dá 2 caminhos possíveis para o primeiro par de estações e 1 caminho possível para o segundo par de estações
+
+Usa o grafo "levada3"
