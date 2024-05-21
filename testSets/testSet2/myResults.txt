@@ -1,8 +1,5 @@
 # Seixal - Alforninha
 12, Seixal, Queimadas, Alforninha
 20, Seixal, Pico Ruivo, Alforninha
-32, Seixal, Queimadas, Ponta do Pargo, Junqueira, Pico Ruivo, Alforninha
-# Alforninha - Ponta do Pargo
-11, Alforninha, Queimadas, Ponta do Pargo
-21, Alforninha, Pico Ruivo, Ponta do Pargo
-43, Alforninha, Queimadas, Seixal, Pico Ruivo, Ponta do Pargo
+# Viveiros - Caseirão
+16, Viveiros, Alcobaça, Caseirão
