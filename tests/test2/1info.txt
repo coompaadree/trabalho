@@ -1,7 +1,0 @@
-Seixal - Alforninha
-Alforninha - Ponta do Pargo
-Junqueira - Pico Ruivo
-Cabeça - Leiria                        #não existem as duas - dois "out of the network"
-Intendente - Leiria                    #não existem a Leiria - um "out of the network"
-Queimadas - Louro                      #não comunicam - "do nor communicate"
-Leiria - Louro                         #não existem a Leiria - um "out of the network"
