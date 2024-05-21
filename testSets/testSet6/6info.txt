@@ -3,6 +3,3 @@ Test set em que:
 - no segundo par de estações (Alforninha - Seixal) há um empate de tempo e de número de estações, de modo que ordena por ordem lexicográfica da segunda estação
 
 Usa o grafo "levada1"
-
-
-ALTERAR O CODIGO E OS RESULTADOS!
