@@ -1,0 +1,8 @@
+Test set em que:
+- no primeiro par de estações (Seixal - Alcobaça) há um empate de tempo, de modo que ordena pelo número de estações
+- no segundo par de estações (Alforninha - Seixal) há um empate de tempo e de número de estações, de modo que ordena por ordem lexicográfica da segunda estação
+
+Usa o grafo "levada1"
+
+
+ALTERAR O CODIGO E OS RESULTADOS!
