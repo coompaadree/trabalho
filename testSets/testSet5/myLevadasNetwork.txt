@@ -1,3 +1,4 @@
+#Id, Name, Connected:
 A, Seixal, [(B, 15), (C, 8)]
 B, Pico Ruivo, [(E, 5), (D, 16)]
 C, Queimadas, [(A, 8), (E, 4), (D, 7)]
