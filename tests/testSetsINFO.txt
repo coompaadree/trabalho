@@ -1,0 +1,11 @@
+Caminho A a B
+
+1 - A a B com 3 caminhos possíveis (sem desempates)
+2 - A a B com 2 caminhos possíveis (sem desempates)
+3 - A a B com 1 caminho possível (sem desempates)
+4 - A a B não comunicam
+5 - A não está na rede
+6 - A e B não estão na rede
+7 - A a B com empate de tempo (ordenação pelo nº estações)
+8 - A a B com empate de tempo e nº estações (ordenação por ordem alfabética)
+9 - Estação Z, Isolada, []
