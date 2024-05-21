@@ -1,0 +1,12 @@
+# Junqueira - Pico Ruivo
+39, Junqueira, Alforninha, Ponta do Pargo, Queimadas, Pico Ruivo
+47, Junqueira, Alcobaça, Ponta do Pargo, Queimadas, Pico Ruivo
+51, Junqueira, Alcobaça, Alforninha, Ponta do Pargo, Queimadas, Pico Ruivo
+# Alcobaça - Queimadas
+29, Alcobaça, Ponta do Pargo, Queimadas
+33, Alcobaça, Alforninha, Ponta do Pargo, Queimadas
+41, Alcobaça, Junqueira, Alforninha, Ponta do Pargo, Queimadas
+# Seixal - Junqueira
+24, Seixal, Pico Ruivo, Junqueira
+25, Seixal, Junqueira
+28, Seixal, Queimadas, Pico Ruivo, Junqueira
