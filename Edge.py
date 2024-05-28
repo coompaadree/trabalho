@@ -15,7 +15,8 @@ class Edge(object):
         Requires:
         src and dst Nodes
         Ensures:
-        Edge such that src == self.getSource() and dest == self.getDestination() 
+        Edge such that src == self.getSource() and dest == self.getDestination()
+        and time == self.getTime() 
         """
         self._src = src
         self._dest = dest
@@ -38,7 +39,7 @@ class Edge(object):
 
     def getTime(self):
         """
-        Gets the destination Node
+        Gets the time associated 
         """
         return self._time
     
@@ -83,8 +84,10 @@ class Edge(object):
         """
         Compares two Edge objects attributes.
         
-        Requires: otherEdge is Edge object
-        Ensures: A boolean value obtained from the equality comparison of
+        Requires:
+        otherEdge is Edge object
+        Ensures:
+        A boolean value obtained from the equality comparison of
         _src, _dest and _time attribute of both Edge objects
         """
         return self.getSource()==otherEdge.getSource() and\
@@ -96,15 +99,17 @@ class Edge(object):
         """
         Compares two Edge objects attributes.
         
-        Requires: otherEdge is Edge object
-        Ensures: A boolean value obtained from the less than comparison
-        of _time attribute of Edge Node objects by node's name
+        Requires:
+        otherEdge is Edge object
+        Ensures:
+        A boolean value obtained from the less than comparison of _time
+        attribute of Edge Node objects (by node's name É MESMO ??? )
         """
         return self.getTime()==otherEdge.getTime()
 
 
     def __str__(self):
         """
-        String representation
+        String representation under the format: A->B   ???
         """
         return self._src.getName() + '->' + self._dest.getName()

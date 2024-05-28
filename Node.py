@@ -43,9 +43,11 @@ class Node(object):
         """
         Compares two Node objects attributes.
         
-        Requires: otherNode is Node object
-        Ensures: A boolean value obtained from the equality comparison of
-        _name attribute of both Node objects
+        Requires:
+        otherNode is Node object
+        Ensures:
+        A boolean value obtained from the equality comparison of _name
+        attribute of both Node objects
         """
         return self.getName()==otherNode.getName()
 
@@ -54,9 +56,11 @@ class Node(object):
         """
         Compares two Node objects attributes.
         
-        Requires: otherNode is Node object
-        Ensures: A boolean value obtained from the less than comparison
-        of _name attribute of both Node objects by node's name
+        Requires:
+        otherNode is Node object
+        Ensures:
+        A boolean value obtained from the less than comparison of _name
+        attribute of both Node objects by node's name
         """
         return self.getName()<otherNode.getName()
     

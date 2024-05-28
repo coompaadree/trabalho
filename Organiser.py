@@ -5,10 +5,12 @@
 
 class Organiser:
     """
+    Class of the Organiser
     """
     
     def __init__(self, solutions, path, acumulate, networkInfo):
         """
+
         """
         self._solutions = solutions
         self._path = path
@@ -18,51 +20,85 @@ class Organiser:
         
     def getSolutions(self):
         """
+        Gets the solutions (which is a dictionary ???? )
         """
         return self._solutions
+    
+
+    def getPath(self):
+        """
+        Gets the path
+        """
+        return self._path
+    
+
+    def getAcumulate(self):
+        """
+        Gets the accumulated time       ???
+        """
+        return self._acumulate
+    
+
+    def getNetworkInfo(self):
+        """
+        Gets the networkInfo (that contains the time of each edge ??? )
+        """
+        return self._networkInfo
+
 
     def setSolutions(self, newSolutions):
         """
+        Sets self._solutions new value.
+
+        Requires:
+        newSolutions is dict ???
+        Ensures:
+        self.getSolutions() == newSolutions
         """
         self._nodes = newSolutions
 
 
-    def getPath(self):
-        """
-        """
-        return self._path
-
     def setPath(self, newPath):
         """
+        Sets self._path new value.
+
+        Requires:
+        newPath is str ???
+        Ensures:
+        self.getPath() == newPath
         """
         self._path = newPath
 
 
-    def getAcumulate(self):
-        """
-        """
-        return self._acumulate
-
     def setAcumulate(self, newAcumulate):
         """
+        Sets self._acumulate new value.
+
+        Requires:
+        newAcumulate is str or int ???
+        Ensures:
+        self.getAcumulate() == newAcumulate
         """
         self._acumulate = newAcumulate
 
+    
+    def setNetworkInfo(self, newNetworkInfo):
+        """
+        Sets self._networkInfo new value.
 
-    def getNetworkInfo(self):
+        Requires:
+        newNetworkInfo is str or int ???
+        Ensures:
+        self.getNetworkInfo() == newNetworkInfo
         """
-        """
-        return self._networkInfo
-
-    def setNetworkInfo(self, networkInfo):
-        """
-        """
-        self._networkInfo = networkInfo
-
+        self._networkInfo = newNetworkInfo
 
 
     def decideBig(self):
-        newDict=self.getSolutions()
+        """
+        Gets the index ??? of the longest (time) path solution
+        """
+        newDict = self.getSolutions()
         decideBig = self.organiseFinal(True)
         decideBig = sorted(decideBig.items(), reverse=True ,key=lambda item: item[1])
         bigger = decideBig[0][0]
@@ -73,10 +109,10 @@ class Organiser:
                 return count
             count=count+1
 
-    
 
     def decideAppend(self):
         """
+        Maintains the _solutions with its maximum length (3) and keeps it sorted ???
         """
         newDict=self.getSolutions()
         totalLen = len(newDict)
@@ -105,9 +141,14 @@ class Organiser:
         return newDict
     
 
-
     def organiseAlphabet(self, indexBig):
         """
+        bla bla
+
+        Requires:
+        indexBig
+        Ensures:
+
         """
         infoDict=self.getSolutions()
         netInfo=self.getNetworkInfo()
@@ -124,9 +165,14 @@ class Organiser:
             return True
         
 
-
     def organiseFinal(self, Reverse):
         """
+        bla bla
+
+        Requires:
+        
+        Ensures:
+        
         """
         netInfo=self.getNetworkInfo()
         newDict=self.getSolutions()
@@ -154,16 +200,15 @@ class Organiser:
 
         return trueDict
     
-    
 
-    def __eq__ (self, otherNode):
+    def __eq__ (self):
         """
  
         """
         return
 
 
-    def __lt__(self, otherNode):
+    def __lt__(self):
         """
         """
         return 
@@ -172,4 +217,4 @@ class Organiser:
     def __str__(self):
         """
         """
-        return self._name
+        return

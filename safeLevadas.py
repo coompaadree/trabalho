@@ -26,7 +26,6 @@ def printPath(path):
     return result
 
 
-
 def DFS(graph, start, end, networkInfo, path, shortest, acumulate, solutions):
     """
     Depth first search in a directed graph
@@ -72,7 +71,6 @@ def DFS(graph, start, end, networkInfo, path, shortest, acumulate, solutions):
     return shortest, solutions
 
 
-
 def search(graph, start, end, networkInfo):
     """
     Wrapper function to initialize DFS function
@@ -86,9 +84,14 @@ def search(graph, start, end, networkInfo):
     return DFS(graph, start, end, networkInfo, [], None, 0, {})
 
 
-
 def infoFromFiles(filename, type):
     """
+    bla bla
+
+    Requires:
+    
+    Ensures:
+        
     """
     if type ==1:
         file=open(filename, "r")
@@ -121,9 +124,14 @@ def infoFromFiles(filename, type):
         return connections
     
 
-
 def infoToFiles(filename, connections, networkInfo, nodes, g):
     """
+    bla bla
+
+    Requires:
+    
+    Ensures:
+        
     """
     file=open(filename, "w")
     for element in connections:
@@ -175,7 +183,6 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
                     file.write(str("\n"))
              
     file.close()
-
 
 
 def testSP():
