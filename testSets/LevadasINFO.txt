@@ -5,7 +5,7 @@ levada 2:
 existem duas redes distintas.
 
 levada 3:
-existem duas redes distintas. Ficheiro mostra que todos os caminhos entre estradas são simétricos.
+existem duas redes distintas. Todos os caminhos entre estações são simétricos.
 
 levada 4:
-só existe uma rede
+só existe uma rede.
