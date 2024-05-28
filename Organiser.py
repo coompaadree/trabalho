@@ -5,24 +5,10 @@
 
 class Organiser:
     """
-    Class of the Organiser
     """
     
     def __init__(self, solutions, path, acumulate, networkInfo):
         """
-        Organises the information
-        
-        Requires:
-        solutions is dict which contains path (tuple) as keys and
-        their time as values
-        path is tuple
-        acumulate is int
-        networkInfo is dict containing station names as keys and
-        their corresponding IDs as values
-        Ensures:
-        empty Digraph, i.e.
-        Digraph such that [] == self.getNodes() and {} == self.getEdges() and
-        {} == self.getEdgesInfo()
         """
         self._solutions = solutions
         self._path = path
@@ -32,105 +18,72 @@ class Organiser:
         
     def getSolutions(self):
         """
-        Gets the solutions
         """
         return self._solutions
-    
-
-    def getPath(self):
-        """
-        Gets the path
-        """
-        return self._path
-    
-
-    def getAcumulate(self):
-        """
-        Gets the acumulate
-        """
-        return self._acumulate
-    
-
-    def getNetworkInfo(self):
-        """
-        Gets the networkInfo
-        """
-        return self._networkInfo
-
 
     def setSolutions(self, newSolutions):
         """
-        Sets self._solutions new value.
-
-        Requires:
-        newSolutions is dict
-        Ensures:
-        self.getSolutions() == newSolutions
         """
         self._nodes = newSolutions
 
 
+    def getPath(self):
+        """
+        """
+        return self._path
+
     def setPath(self, newPath):
         """
-        Sets self._path new value.
-
-        Requires:
-        newPath is tuple
-        Ensures:
-        self.getPath() == newPath
         """
         self._path = newPath
 
 
+    def getAcumulate(self):
+        """
+        """
+        return self._acumulate
+
     def setAcumulate(self, newAcumulate):
         """
-        Sets self._acumulate new value.
-
-        Requires:
-        newAcumulate is int
-        Ensures:
-        self.getAcumulate() == newAcumulate
         """
         self._acumulate = newAcumulate
 
-    
-    def setNetworkInfo(self, newNetworkInfo):
-        """
-        Sets self._networkInfo new value.
 
-        Requires:
-        newNetworkInfo is dict
-        Ensures:
-        self.getNetworkInfo() == newNetworkInfo
+    def getNetworkInfo(self):
         """
-        self._networkInfo = newNetworkInfo
+        """
+        return self._networkInfo
+
+    def setNetworkInfo(self, networkInfo):
+        """
+        """
+        self._networkInfo = networkInfo
+
 
 
     def decideBig(self):
-        """
-        Gets the index of the longest (time) path solution
-        """
-        newDict = self.getSolutions()
-        decideBig = self.organiseFinal(True)
-        decideBig = sorted(decideBig.items(), reverse=True ,key=lambda item: item[1])
+        newDict=self.getSolutions()
+        decideBig = self.organiseFinal()
+        newdecideBig = list(reversed(decideBig.items()))
+        decideBig= newdecideBig
         bigger = decideBig[0][0]
 
-        count = 0
+        count=0
         for element in list(newDict.keys()):
             if bigger == element:
                 return count
-            count = count+1
+            count=count+1
 
+    
 
     def decideAppend(self):
         """
-        Maintains the _solutions with its maximum length (3 best solutions)
         """
-        newDict = self.getSolutions()
+        newDict=self.getSolutions()
         totalLen = len(newDict)
 
         if totalLen >=3:
-            indexBig = self.decideBig()
+            indexBig=self.decideBig()
 
             if list(newDict.values())[indexBig] == self.getAcumulate():
                 if len(list(newDict.keys())[indexBig]) < len(self.getPath()):
@@ -153,65 +106,76 @@ class Organiser:
         return newDict
     
 
+
     def organiseAlphabet(self, indexBig):
         """
-        Organises the list alphabetically
-
-        Requires:
-        indexBig is int
-        Ensures:
-        A boolean value
         """
-        infoDict = self.getSolutions()
-        netInfo = self.getNetworkInfo()
+        infoDict=self.getSolutions()
+        netInfo=self.getNetworkInfo()
 
-        list(infoDict.keys())[indexBig][1] #isto faz algo ???
+        list(infoDict.keys())[indexBig][1]
 
-        testList =\
-            [list(netInfo.keys())[list(netInfo.values()).index(list(infoDict.keys())[indexBig][1])],\
-            list(netInfo.keys())[list(netInfo.values()).index(self.getPath()[1])]]
+        testList=[list(netInfo.keys())[list(netInfo.values()).index(list(infoDict.keys())[indexBig][1])], list(netInfo.keys())[list(netInfo.values()).index(self.getPath()[1])]]
 
-        testList = sorted(testList, reverse=False)
-        
+        testList=sorted(testList, reverse=False)
+
         if testList[0] == list(netInfo.keys())[list(netInfo.values()).index(list(infoDict.keys())[indexBig][1])]:
             return False
         else:
             return True
         
 
-    def organiseFinal(self, Reverse):
-        """
-                                                ???????
 
-        Requires:
-        Reverse is a boolean value
-        Ensures:
-        final dictionary with best solutions (???)
+    def organiseFinal(self):
         """
-        netInfo = self.getNetworkInfo()
-        newDict = self.getSolutions()
+        """
+        netInfo=self.getNetworkInfo()
+        newDict=self.getSolutions()
 
         if len(newDict) == 1 or len(newDict)==0:
             return newDict
         
         elif len(newDict) == 2:
-            testList = {"0":list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[0][1])],\
-                      "1": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[1][1])]}
+            testList={"0":list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[0][1])], "1": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[1][1])]}
 
         elif len(newDict) == 3:
-            testList = {"0":list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[0][1])],\
-                       "1": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[1][1])],\
-                        "2": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[2][1])]}
+            testList={"0":list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[0][1])], "1": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[1][1])], "2": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[2][1])]}
 
+        testList=dict(sorted(testList.items(), reverse=False, key=lambda item: item[1]))
 
-        testList = dict(sorted(testList.items(), reverse=Reverse, key=lambda item: item[1]))
+        testListNum=list(testList.keys())
 
-        testListNum = list(testList.keys())
 
         trueDict={}
         for element in testListNum:
-            trueDict[list(newDict.items())[int(element)][0]] =\
-                list(newDict.items())[int(element)][1]
+            trueDict[list(newDict.items())[int(element)][0]]=list(newDict.items())[int(element)][1]
 
-        trueDict = dict(sorted(trueDict.items(), key=lambda item: item[1]))
+        newtrueDict = {}
+        for item in sorted(trueDict, key=len, reverse=True):
+            newtrueDict[item] = trueDict[item]
+
+        trueDict = newtrueDict
+
+        trueDict=dict(sorted(trueDict.items(), key=lambda item: item[1]))
+
         return trueDict
+    
+    
+
+    def __eq__ (self, otherNode):
+        """
+ 
+        """
+        return
+
+
+    def __lt__(self, otherNode):
+        """
+        """
+        return 
+    
+
+    def __str__(self):
+        """
+        """
+        return self._name
