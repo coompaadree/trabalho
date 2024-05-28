@@ -1,5 +1,7 @@
+Todos os caminhos entre estações são simétricos.
+
 levada 1:
-só existe uma rede.
+só existe uma rede. Todos os caminhos entre estações são simétricos.
 
 levada 2:
 existem duas redes distintas.
