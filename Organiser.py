@@ -10,7 +10,19 @@ class Organiser:
     
     def __init__(self, solutions, path, acumulate, networkInfo):
         """
-
+        Organises de information and
+        
+        Requires:
+        solutions is dict which contains path (tuple) as keys and
+        their time as values
+        path is tuple
+        acumulate is int
+        networkInfo is dict which contains station names as keys and
+        their corresponding IDs as values
+        Ensures:
+        empty Digraph, i.e.
+        Digraph such that [] == self.getNodes() and {} == self.getEdges() and
+        {} == self.getEdgesInfo()
         """
         self._solutions = solutions
         self._path = path
@@ -20,7 +32,7 @@ class Organiser:
         
     def getSolutions(self):
         """
-        Gets the solutions (which is a dictionary ???? )
+        Gets the solutions
         """
         return self._solutions
     
@@ -34,14 +46,14 @@ class Organiser:
 
     def getAcumulate(self):
         """
-        Gets the accumulated time       ???
+        Gets the acumulate
         """
         return self._acumulate
     
 
     def getNetworkInfo(self):
         """
-        Gets the networkInfo (that contains the time of each edge ??? )
+        Gets the networkInfo
         """
         return self._networkInfo
 
@@ -51,7 +63,7 @@ class Organiser:
         Sets self._solutions new value.
 
         Requires:
-        newSolutions is dict ???
+        newSolutions is dict
         Ensures:
         self.getSolutions() == newSolutions
         """
@@ -63,7 +75,7 @@ class Organiser:
         Sets self._path new value.
 
         Requires:
-        newPath is str ???
+        newPath is tuple
         Ensures:
         self.getPath() == newPath
         """
@@ -75,7 +87,7 @@ class Organiser:
         Sets self._acumulate new value.
 
         Requires:
-        newAcumulate is str or int ???
+        newAcumulate is int
         Ensures:
         self.getAcumulate() == newAcumulate
         """
@@ -87,7 +99,7 @@ class Organiser:
         Sets self._networkInfo new value.
 
         Requires:
-        newNetworkInfo is str or int ???
+        newNetworkInfo is dict
         Ensures:
         self.getNetworkInfo() == newNetworkInfo
         """
@@ -96,7 +108,7 @@ class Organiser:
 
     def decideBig(self):
         """
-        Gets the index ??? of the longest (time) path solution
+        Gets the index of the longest (time) path solution
         """
         newDict = self.getSolutions()
         decideBig = self.organiseFinal(True)
@@ -112,7 +124,7 @@ class Organiser:
 
     def decideAppend(self):
         """
-        Maintains the _solutions with its maximum length (3) and keeps it sorted ???
+        Maintains the _solutions with its maximum length (3 best solutions)
         """
         newDict=self.getSolutions()
         totalLen = len(newDict)
