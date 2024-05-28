@@ -1,4 +1,3 @@
-#Id, Name, Connected:
 A, Abóbada, [(B, 15), (C, 8)]
 B, Branquinho, [(A, 15), (D, 5), (I, 7)]
 C, Caxias, [(A, 8), (D, 4)]

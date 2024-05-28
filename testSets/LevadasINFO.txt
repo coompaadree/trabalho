@@ -1,8 +1,11 @@
 levada 1:
-só existe uma rede e tudo funciona sem quaisquer exceções/rasteiras.
+só existe uma rede.
 
 levada 2:
 existem duas redes distintas.
 
 levada 3:
-existem duas redes distintas.
+existem duas redes distintas. Ficheiro mostra que todos os caminhos entre estradas são simétricos.
+
+levada 4:
+só existe uma rede
