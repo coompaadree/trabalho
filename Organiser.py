@@ -10,7 +10,7 @@ class Organiser:
     
     def __init__(self, solutions, path, acumulate, networkInfo):
         """
-        Organises de information (in order to give the desired solutions ???)
+        Organises the information
         
         Requires:
         solutions is dict which contains path (tuple) as keys and
@@ -155,7 +155,7 @@ class Organiser:
 
     def organiseAlphabet(self, indexBig):
         """
-        Organises the list alphabetically (???)
+        Organises the list alphabetically
 
         Requires:
         indexBig is int
