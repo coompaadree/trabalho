@@ -131,19 +131,6 @@ class Digraph(object):
         return self._edges[str(node)]
 
 
-    def __eq__ (self):              # é preciso ???
-        """
- 
-        """
-        return
-
-
-    def __lt__(self):              # é preciso ???
-        """
-        """
-        return
-
-
     def __str__(self):
         """
         String representation under the format: A->B  ???  # qt mt acrescentávamos o tempo entre estações

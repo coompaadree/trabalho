@@ -103,7 +103,7 @@ class Edge(object):
         otherEdge is Edge object
         Ensures:
         A boolean value obtained from the less than comparison of _time
-        attribute of Edge Node objects (by node's name É MESMO ??? )
+        attribute of Edge Node objects
         """
         return self.getTime()==otherEdge.getTime()
 
