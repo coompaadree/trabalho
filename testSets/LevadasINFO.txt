@@ -1,13 +1,13 @@
-Todos os caminhos entre estações são simétricos.
+Criámos 4 grafos de levadas diferentes. Uns possuem 2 redes que não se tocam/comunicam e outros só possuem uma rede. Todos os caminhos entre estações são simétricos. Na levada 3 isso está explícito, nas outras levadas está implícito.
 
 levada 1:
-só existe uma rede. Todos os caminhos entre estações são simétricos.
+Só existe uma rede.
 
 levada 2:
-existem duas redes distintas.
+Existem duas redes distintas.
 
 levada 3:
-existem duas redes distintas. Todos os caminhos entre estações são simétricos.
+Existem duas redes distintas.
 
 levada 4:
-só existe uma rede.
+Só existe uma rede.
