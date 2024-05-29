@@ -26,7 +26,6 @@ def printPath(path):
     return result
 
 
-
 def DFS(graph, start, end, networkInfo, path, shortest, acumulate, solutions):
     """
     Depth first search in a directed graph
@@ -43,7 +42,6 @@ def DFS(graph, start, end, networkInfo, path, shortest, acumulate, solutions):
     path = path + [start]
     path = tuple(path)
 
-
     if len(path)>1:
         for item in graph._edgesInfo.get(path[len(path)-2]):
             if item[0]==path[len(path)-1]:
@@ -53,8 +51,7 @@ def DFS(graph, start, end, networkInfo, path, shortest, acumulate, solutions):
             solutions = Organiser(solutions, path, acumulate, networkInfo)
             solutions = solutions.decideAppend()
 
-
-    path=list(path)
+    path = list(path)
     for node in graph.childrenOf(start):
 
         if node not in path:
@@ -71,7 +68,6 @@ def DFS(graph, start, end, networkInfo, path, shortest, acumulate, solutions):
     return shortest, solutions
 
 
-
 def search(graph, start, end, networkInfo):
     """
     Wrapper function to initialize DFS function
@@ -85,41 +81,47 @@ def search(graph, start, end, networkInfo):
     return DFS(graph, start, end, networkInfo, [], None, 0, {})
 
 
-
 def infoFromFiles(filename, type):
     """
+    Reads a .txt file
+
+    Requires:
+    fileName is str with the name of a .txt file
+    type is int
+    Ensures:
+    2 lists (network and connections), containing other lists inside
     """
-    if type ==1:
-        file=open(filename, "r")
-        network=[]
-        first=True
+    if type == 1:
+        file = open(filename, "r")
+        network = []
+        first = True
 
         for line in file:
             if first==True:
-                first=False
+                first = False
             else:
-                id=line.rstrip().split(", ")[0]
-                name=line.rstrip().split(", ")[1]
-                conected=line.rstrip()
-                index=conected.index("[")
-                conected=conected[index:].replace("),", ");").replace("(", """('""").replace(")", """')""").replace(", ", """', '""").replace(";", ",")
+                id = line.rstrip().split(", ")[0]
+                name = line.rstrip().split(", ")[1]
+                conected = line.rstrip()
+                index = conected.index("[")
+                conected = conected[index:].replace("),", ");").replace("(", """('""").replace(")", """')""").replace(", ", """', '""").replace(";", ",")
                 conected = eval(conected)
                 network.append([id, name, conected])
 
         file.close()
 
-        total={}
-        totalNum={}
-        totalList=[]
-        totalListNum=[]
+        total = {}
+        totalNum = {}
+        totalList = []
+        totalListNum = []
         for item in network:
             for elem in item[2]:
                 totalList.append(elem[0][0])
                 totalListNum.append(elem)
-            total[item[0]]=totalList
-            totalNum[item[0]]=totalListNum
-            totalList=[]
-            totalListNum=[]
+            total[item[0]] = totalList
+            totalNum[item[0]] = totalListNum
+            totalList = []
+            totalListNum = []
         
         for elem in total.items() and totalNum.items():
             for each in elem[1:]:
@@ -132,10 +134,9 @@ def infoFromFiles(filename, type):
         
         return network
 
-
     if type == 2:
-        file=open(filename, "r")
-        connections=[]
+        file = open(filename, "r")
+        connections = []
 
         for line in file:
             connections.append(line.rstrip().split(" - "))
@@ -144,11 +145,21 @@ def infoFromFiles(filename, type):
         return connections
     
 
-
 def infoToFiles(filename, connections, networkInfo, nodes, g):
     """
+    Writes into a .txt file
+
+    Requires:
+    filename is str of the output file
+    connections is list of lists containing pairs of stations
+    networkInfo is dict containing station names as keys and
+    their corresponding IDs as values
+    nodes is list containg nodes of the graph
+    g is Digraph
+    Ensures:
+    new .txt file
     """
-    file=open(filename, "w")
+    file = open(filename, "w")
     for element in connections:
         
         if element[0] not in networkInfo or element[1] not in networkInfo:  
@@ -163,7 +174,7 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
         else:
             sp = search(g, nodes[nodes.index(networkInfo[element[0]])], \
                          nodes[nodes.index(networkInfo[element[1]])], networkInfo)
-            info=list(sp[1].items())
+            info = list(sp[1].items())
             
             if info==[]:
                 file.write("# " + element[0] + " - " + element[1] + "\n")
@@ -172,7 +183,7 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
 
             else:
                 file.write("# " + element[0] + " - " + element[1] + "\n")
-                smallList=[]
+                smallList = []
                 
                 for elem in range(0, len(info), 1):
                     smallList.append([info[elem][1], info[elem][0]])
@@ -187,7 +198,7 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
                         smallList[el][num]
                         for key, value in networkInfo.items():
                             if smallList[el][num]==value:
-                                smallList[el][num]=key
+                                smallList[el][num] = key
 
                 for ele in range(0, len(smallList), 1):
                     for ite in range(0, len(smallList[ele]),1):
@@ -200,19 +211,17 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
     file.close()
 
 
-
 def testSP():
     """
     Function to test search in a graph with a specific example
     """
     
-    network=infoFromFiles(sys.argv[1], 1)
-    connections=infoFromFiles(sys.argv[2], 2)
+    network = infoFromFiles(sys.argv[1], 1)
+    connections = infoFromFiles(sys.argv[2], 2)
 
     networkInfo = {}
     for elem in network:
-        networkInfo[elem[1]]=elem[0]
-
+        networkInfo[elem[1]] = elem[0]
 
     nodes = []
     for id in range(len(network)):
@@ -223,15 +232,12 @@ def testSP():
     for n in nodes:
         g.addNode(n)
     
-    
     for element in network:
-        base=element[2]
+        base = element[2]
         for item in base:
             g.addEdge(Edge(element[0],item[0], item[1]))
 
     infoToFiles(sys.argv[3], connections, networkInfo, nodes, g)
     
-
-
-    
+ 
 testSP()
