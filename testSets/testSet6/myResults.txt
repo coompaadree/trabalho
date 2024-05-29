@@ -3,6 +3,6 @@
 19, Seixal, Queimadas, Alcobaça
 26, Seixal, Pico Ruivo, Alforninha, Alcobaça
 # Alforninha - Seixal
-33, Alforninha, Ponta do Pargo, Queimadas, Seixal
-45, Alforninha, Alcobaça, Ponta do Pargo, Queimadas, Seixal
-45, Alforninha, Ponta do Pargo, Queimadas, Pico Ruivo, Seixal
+11, Alforninha, Queimadas, Seixal
+18, Alforninha, Pico Ruivo, Seixal
+22, Alforninha, Pico Ruivo, Queimadas, Seixal
