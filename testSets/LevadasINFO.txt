@@ -1,4 +1,4 @@
-Criámos 4 grafos de levadas diferentes. Uns possuem 2 redes que não se tocam/comunicam e outros só possuem uma rede. Todos os caminhos entre estações são simétricos. Na levada 3 isso está explícito, nas outras levadas está implícito.
+Criámos 4 grafos de levadas diferentes. Uns possuem 2 redes que não se tocam/comunicam e outros só possuem uma rede. Todos os caminhos entre estações são simétricos. Na levada 3 isso está explícito, nas outras levadas está implícito. Existe uma estação isolada no testSet 1 e no 6.
 
 levada 1:
 Só existe uma rede.

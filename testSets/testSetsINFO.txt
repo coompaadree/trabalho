@@ -1,7 +1,6 @@
 1 - A a B, com 3 caminhos possíveis (sem desempates)
-2 - A a B, com 2 caminhos possíveis (sem desempates) e C a D com 1 caminho possível (sem desempates), para ver se dá todos os caminhos possíveis quando não há 3 melhores
+2 - A a B, com 2 caminhos possíveis (sem desempates) e C a D com 1 caminho possível, para ver se dá todos os caminhos possíveis quando não há 3 melhores
 3 - A e B não comunicam
 4 - A não está na rede
-5 - A e B não estão na rede
+5 - A e B (ambas) não estão na rede
 6 - A a B, com empate de tempo (ordenação pelo nº estações) e A a B, com empate de tempo e nº estações (ordenação por ordem alfabética)
-(Estação Z, Isolada, [] existe no testSet 1 e no 6)
