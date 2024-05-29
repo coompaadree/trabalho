@@ -3,4 +3,5 @@
 3 - A e B não comunicam
 4 - A não está na rede
 5 - A e B (ambas) não estão na rede
-6 - A a B, com empate de tempo (ordenação pelo nº estações) e A a B, com empate de tempo e nº estações (ordenação por ordem alfabética)
+6 - A a B, com empate de tempo (ordenação pelo nº estações)
+7 - A a B, com empate de tempo e nº estações (ordenação por ordem alfabética)
