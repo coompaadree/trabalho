@@ -1,12 +1,8 @@
-# Junqueira - Pico Ruivo
-12, Junqueira, Alforninha, Pico Ruivo
-12, Junqueira, Pico Ruivo
-17, Junqueira, Alforninha, Queimadas, Pico Ruivo
-# Alcobaça - Queimadas
-11, Alcobaça, Alforninha, Queimadas
-11, Alcobaça, Queimadas
-19, Alcobaça, Junqueira, Alforninha, Queimadas
-# Seixal - Junqueira
-17, Seixal, Queimadas, Alforninha, Junqueira
-24, Seixal, Pico Ruivo, Alforninha, Junqueira
-24, Seixal, Pico Ruivo, Junqueira
+# Seixal - Queimadas
+8, Seixal, Queimadas
+20, Seixal, Pico Ruivo, Queimadas
+21, Seixal, Pico Ruivo, Alforninha, Queimadas
+# Pico Ruivo - Alforninha
+6, Pico Ruivo, Alforninha
+11, Pico Ruivo, Queimadas, Alforninha
+18, Pico Ruivo, Junqueira, Alforninha
