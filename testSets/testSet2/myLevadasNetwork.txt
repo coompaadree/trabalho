@@ -1,0 +1,10 @@
+#Id, Name, Connected:
+A, Chão das Feiteiras, [(B, 15), (C, 8)]
+B, Folhadal, [(D, 5), (I, 7)]
+C, Pináculo, [(D, 4)]
+D, Bica da Cana, []
+E, Serra do Faial, [(F, 10), (G, 6)]
+F, Cabo Girão, [(G, 8)]
+G, Ribeira Brava, [(H, 12)]
+H, Ribeira da Janela, []
+I, Pico do Facho, []

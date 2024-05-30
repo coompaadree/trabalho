@@ -160,16 +160,27 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
     new .txt file
     """
     file = open(filename, "w")
+    alreadyOut=False
     for element in connections:
         
         if element[0] not in networkInfo or element[1] not in networkInfo:  
             #meter as duas ou só uma?
             file.write("# " + element[0] + " - " + element[1] + "\n")
             if element[0] not in networkInfo:
-                file.write(str(element[0]) + " out of the network"  + "\n")
+                if element == connections[-1]:
+                    file.write(str(element[0]) + " out of the network")
+                else:
+                    file.write(str(element[0]) + " out of the network"  + "\n")
+                alreadyOut=True
 
             if element[1] not in networkInfo:
-                file.write(str(element[1]) + " out of the network"  + "\n")
+                if element == connections[-1] and alreadyOut==True:
+                    if alreadyOut==True:
+                        file.write("\n" + str(element[1]) + " out of the network")
+                    else:
+                        file.write(str(element[1]) + " out of the network")
+                else:
+                    file.write(str(element[1]) + " out of the network"  + "\n")
 
         else:
             sp = search(g, nodes[nodes.index(networkInfo[element[0]])], \
@@ -178,7 +189,11 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
             
             if info==[]:
                 file.write("# " + element[0] + " - " + element[1] + "\n")
-                file.write(str(element[0]) + " and " + str(element[1]) + \
+                if element == connections[-1]:
+                    file.write(str(element[0]) + " and " + str(element[1]) + \
+                           " do not communicate")
+                else:
+                    file.write(str(element[0]) + " and " + str(element[1]) + \
                            " do not communicate"  + "\n")
 
             else:
@@ -206,7 +221,11 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
                             file.write(str(smallList[ele][ite]))
                         else:
                             file.write(str(smallList[ele][ite]) + ", ")
-                    file.write(str("\n"))
+
+                    if element != connections[-1]:
+                        file.write(str("\n"))
+                    elif element == connections[-1] and ele != len(smallList)-1:
+                        file.write(str("\n"))
              
     file.close()
 
