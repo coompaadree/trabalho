@@ -1,3 +1,0 @@
-Test set em que par de estações não comunicam
-
-Usa o grafo "levada2"

@@ -1,5 +1,0 @@
-# Abóbada - Damasco
-12, Abóbada, Caxias, Damasco
-20, Abóbada, Branquinho, Damasco
-# Branquinho - Iris
-7, Branquinho, Iris

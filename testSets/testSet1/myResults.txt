@@ -1,8 +1,0 @@
-# Seixal - Queimadas
-8, Seixal, Queimadas
-20, Seixal, Pico Ruivo, Queimadas
-21, Seixal, Pico Ruivo, Alforninha, Queimadas
-# Pico Ruivo - Alforninha
-6, Pico Ruivo, Alforninha
-11, Pico Ruivo, Queimadas, Alforninha
-18, Pico Ruivo, Junqueira, Alforninha
