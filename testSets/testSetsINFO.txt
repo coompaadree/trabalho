@@ -1,0 +1,14 @@
+Criámos 8 testSets diferentes.
+Alguns deles partilham uma mesma levada sobre a qual testam coisas diferentes.
+
+Levada 1:
+Test Set - 1, 2, 3
+
+Levada 2:
+Test Set - 4, 5, 6
+
+Levada 3:
+Test Set - 7
+
+Levada 4:
+Test Set - 8
