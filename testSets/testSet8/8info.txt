@@ -1,3 +1,0 @@
-Test set em que se testa estação isolada 
-
-Usa o grafo "levada1"

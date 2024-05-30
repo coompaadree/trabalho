@@ -1,3 +1,0 @@
-Test set em que há um empate de tempo e nº estações, de modo que ordena por ordem alfabética
-
-Usa o grafo "levada4"

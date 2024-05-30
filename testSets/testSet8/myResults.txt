@@ -1,4 +1,0 @@
-# Canical - Monte
-Canical and Monte do not communicate
-# Monte - Baixo
-Baixo out of the network

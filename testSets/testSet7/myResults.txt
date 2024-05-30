@@ -1,4 +1,0 @@
-# Rocha Vermelha - Terra Chã
-19, Rocha Vermelha, Penha de Águia, Terra Chã
-22, Rocha Vermelha, Maroços, Camacha, Terra Chã
-25, Rocha Vermelha, Penha de Águia, Pico Branco, Terra Chã
