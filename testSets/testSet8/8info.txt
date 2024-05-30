@@ -1,0 +1,15 @@
+Test Set:
+ - Nem todas as direções das coneções estão referidas;
+ - Tem uma estação inexistente;
+ - Tem desempate de tempo apartir do tamanho dos caminhos em questão;
+ - Tem desempate de tempo e tamanho de caminhos apartir da ordem alfabética;
+ - Verifica que não existem erros caso o número de caminhos possíveis seja menor que três;
+ - Verifica que não existem ciclos que passam pelo mesmo posto mais de uma vez.
+
+Características Gerais:
+ - Usa o grafo: "levada_4";
+ - Analisa e completa as conexões omitidas;
+ - Existem duas redes distintas;
+ - Test Set com "exceções" ao nível de desempates de tempo por nº de estações;
+ - Test Set com "exceções" ao nível de desempates de tempo e nº de estações por ordem alfabética;
+ - Faz verificações ao nível de como são guardados e "pesquisados" os caminhos possíveis.

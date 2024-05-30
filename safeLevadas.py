@@ -174,14 +174,15 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
                 alreadyOut=True
 
             if element[1] not in networkInfo:
-                if element == connections[-1] and alreadyOut==True:
+                if element == connections[-1]:
                     if alreadyOut==True:
                         file.write("\n" + str(element[1]) + " out of the network")
                     else:
                         file.write(str(element[1]) + " out of the network")
                 else:
                     file.write(str(element[1]) + " out of the network"  + "\n")
-
+            alreadyOut=False
+            
         else:
             sp = search(g, nodes[nodes.index(networkInfo[element[0]])], \
                          nodes[nodes.index(networkInfo[element[1]])], networkInfo)
