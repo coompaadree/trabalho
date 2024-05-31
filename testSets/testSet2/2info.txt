@@ -1,7 +1,0 @@
-Test Set:
- - Tem dois exemplos de desempate de tempo apartir do tamanho dos caminhos em questão.
-
-Características Gerais:
- - Usa o grafo: "levada_1";
- - Só existe uma rede;
- - Test Set com "exceções" ao nível de desempates de tempo por nº de estações.

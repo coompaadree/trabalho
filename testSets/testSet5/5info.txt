@@ -1,9 +1,0 @@
-Test Set:
- - Nem todas as direções das coneções estão referidas;
- - Não comunicação entre duas redes distintas dentro da mesma network.
-
-Características Gerais:
- - Usa o grafo: "levada_2";
- - Analisa e completa as conexões omitidas;
- - Existem duas redes distintas;
- - Test Set com "exceções" de não comunicação ("do not communicate").

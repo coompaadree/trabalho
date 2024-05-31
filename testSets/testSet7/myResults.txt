@@ -1,5 +1,0 @@
-# Chão das Feiteiras - Bica da Cana
-12, Chão das Feiteiras, Pináculo, Bica da Cana
-20, Chão das Feiteiras, Folhadal, Bica da Cana
-# Folhadal - Pico do Facho
-7, Folhadal, Pico do Facho

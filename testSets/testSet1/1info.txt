@@ -1,8 +1,0 @@
-Test Set:
- - Não tem desempates;
- - Não tem caminhos maiores com tempo mais pequeno.
-
-Características Gerais:
- - Usa o grafo: "levada_1";
- - Só existe uma rede;
- - Test Set básico sem "exceções".

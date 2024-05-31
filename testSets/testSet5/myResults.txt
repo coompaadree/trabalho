@@ -1,8 +1,0 @@
-# Santana - Curral das Freiras
-Santana and Curral das Freiras do not communicate
-# Ribeira Seca - Lagoa do Vento
-Ribeira Seca and Lagoa do Vento do not communicate
-# Pico do Areeiro - Barreira
-Pico do Areeiro and Barreira do not communicate
-# Rabacal - Poco da Neve
-Rabacal and Poco da Neve do not communicate

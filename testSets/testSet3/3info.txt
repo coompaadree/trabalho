@@ -1,9 +1,0 @@
-Test Set:
- - Tem uma estação isolada;
- - É referenciada uma estação no ficheiro myStations que não existe na network.
-
-Características Gerais:
- - Usa o grafo: "levada_1";
- - Só existe uma rede;
- - Test Set com "exceções" de não comunicação ("do not communicate") e de não 
-   existência de estação ("out of the network").
