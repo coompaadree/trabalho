@@ -1,0 +1,8 @@
+# Canical - Campo do Pomar
+19, Canical, Santo da Serra, Ribeiro Frio, Campo do Pomar
+19, Canical, Santo da Serra, Campo do Pomar
+26, Canical, Marocos, Ribeiro Frio, Campo do Pomar
+# Camacha - Canical
+17, Camacha, Ribeiro Frio, Santo da Serra, Canical
+24, Camacha, Ribeiro Frio, Marocos, Canical
+24, Camacha, Marocos, Canical

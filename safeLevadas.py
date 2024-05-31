@@ -129,9 +129,8 @@ def infoFromFiles(filename, type):
                     if elem[0] not in total.get(item[0]):
                         totalNum.get(item[0]).append((elem[0], item[1]))
         
-        for i in network:
-            i[2] = totalNum.get(i[0])
-        
+        for lineInfo in network:
+            lineInfo[2] = totalNum.get(lineInfo[0])
         return network
 
     if type == 2:
@@ -164,7 +163,6 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
     for element in connections:
         
         if element[0] not in networkInfo or element[1] not in networkInfo:  
-            #meter as duas ou só uma?
             file.write("# " + element[0] + " - " + element[1] + "\n")
             if element[0] not in networkInfo:
                 if element == connections[-1]:
@@ -201,31 +199,31 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
                 file.write("# " + element[0] + " - " + element[1] + "\n")
                 smallList = []
                 
-                for elem in range(0, len(info), 1):
-                    smallList.append([info[elem][1], info[elem][0]])
+                for indexInfo in range(0, len(info), 1):
+                    smallList.append([info[indexInfo][1], info[indexInfo][0]])
 
-                for el in range(0, len(smallList), 1):
-                    for it in range(0, len(smallList[el][1]), 1):
-                        smallList[el].append(smallList[el][1][it])
+                for indexSmallList in range(0, len(smallList), 1):
+                    for connectedSmallList in range(0, len(smallList[indexSmallList][1]), 1):
+                        smallList[indexSmallList].append(smallList[indexSmallList][1][connectedSmallList])
 
-                    del smallList[el][1]
+                    del smallList[indexSmallList][1]
 
-                    for num in range(1, len(smallList[el]), 1):
-                        smallList[el][num]
+                    for IDsmallList in range(1, len(smallList[indexSmallList]), 1):
+                        smallList[indexSmallList][IDsmallList]
                         for key, value in networkInfo.items():
-                            if smallList[el][num]==value:
-                                smallList[el][num] = key
+                            if smallList[indexSmallList][IDsmallList]==value:
+                                smallList[indexSmallList][IDsmallList] = key
 
-                for ele in range(0, len(smallList), 1):
-                    for ite in range(0, len(smallList[ele]),1):
-                        if ite==len(smallList[ele])-1:
-                            file.write(str(smallList[ele][ite]))
+                for station in range(0, len(smallList), 1):
+                    for item in range(0, len(smallList[station]),1):
+                        if item==len(smallList[station])-1:
+                            file.write(str(smallList[station][item]))
                         else:
-                            file.write(str(smallList[ele][ite]) + ", ")
+                            file.write(str(smallList[station][item]) + ", ")
 
                     if element != connections[-1]:
                         file.write(str("\n"))
-                    elif element == connections[-1] and ele != len(smallList)-1:
+                    elif element == connections[-1] and station != len(smallList)-1:
                         file.write(str("\n"))
              
     file.close()
@@ -259,5 +257,5 @@ def testSP():
 
     infoToFiles(sys.argv[3], connections, networkInfo, nodes, g)
     
- 
+    
 testSP()

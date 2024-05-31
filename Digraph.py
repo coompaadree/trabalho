@@ -105,8 +105,8 @@ class Digraph(object):
         Requires:
         edge is Edge not in the digraph yet
         Ensures:
-        getEdges[node] == dest                   a alterar !!! Porquê ?
-        getEdgesInfo[node] == (dest,time)        a alterar !!!
+        getEdges[node] == dest
+        getEdgesInfo[node] == (dest,time)
         """
         src = edge.getSource()
         dest = edge.getDestination()
@@ -126,14 +126,14 @@ class Digraph(object):
         Requires:
         node is Node object
         Ensures:
-        node belonging to the path (that starts in the node "node")  melhorar ?
+        node belonging to the path (that starts in the parent node)
         """
         return self._edges[str(node)]
 
 
     def __str__(self):
         """
-        String representation under the format: A->B  ???  # qt mt acrescentávamos o tempo entre estações
+        String representation under the format: A->B
         """
         result = ''
         for src in self._nodes:

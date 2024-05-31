@@ -1,0 +1,9 @@
+Test Set:
+ - Nem todas as direções das coneções estão referidas;
+ - É referenciada uma estação no ficheiro myStations que não existe na network.
+
+Características Gerais:
+ - Usa o grafo: "levada_2";
+ - Analisa e completa as conexões omitidas;
+ - Existem duas redes distintas;
+ - Test Set com "exceções" de não existência de estação ("out of the network").

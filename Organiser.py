@@ -168,7 +168,8 @@ class Organiser:
 
         list(infoDict.keys())[indexBig][1]
 
-        testList=[list(netInfo.keys())[list(netInfo.values()).index(list(infoDict.keys())[indexBig][1])], list(netInfo.keys())[list(netInfo.values()).index(self.getPath()[1])]]
+        testList=[list(netInfo.keys())[list(netInfo.values()).index(list(infoDict.keys())[indexBig][1])], \
+                  list(netInfo.keys())[list(netInfo.values()).index(self.getPath()[1])]]
 
         testList=sorted(testList, reverse=False)
 
@@ -180,12 +181,7 @@ class Organiser:
 
     def organiseFinal(self):
         """
-                                                ???????
-
-        Requires:
-        Reverse is a boolean value
-        Ensures:
-        final dictionary with best solutions (???)
+        Organises a given solutions dictionary
         """
         netInfo=self.getNetworkInfo()
         newDict=self.getSolutions()
