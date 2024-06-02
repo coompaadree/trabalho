@@ -174,7 +174,7 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
             if element[1] not in networkInfo:
                 if element == connections[-1]:
                     if alreadyOut==True:
-                        file.write("\n" + str(element[1]) + " out of the network")
+                        file.write("\n" +str(element[1])+ " out of the network")
                     else:
                         file.write(str(element[1]) + " out of the network")
                 else:
@@ -183,7 +183,7 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
             
         else:
             sp = search(g, nodes[nodes.index(networkInfo[element[0]])], \
-                         nodes[nodes.index(networkInfo[element[1]])], networkInfo)
+                    nodes[nodes.index(networkInfo[element[1]])], networkInfo)
             info = list(sp[1].items())
             
             if info==[]:
@@ -223,7 +223,7 @@ def infoToFiles(filename, connections, networkInfo, nodes, g):
 
                     if element != connections[-1]:
                         file.write(str("\n"))
-                    elif element == connections[-1] and station != len(smallList)-1:
+                    elif element==connections[-1] and station!=len(smallList)-1:
                         file.write(str("\n"))
              
     file.close()

@@ -110,28 +110,28 @@ class Organiser:
         """
         Gets the index of the longest (time) path solution
         """
-        newDict=self.getSolutions()
+        newDict = self.getSolutions()
         decideBig = self.organiseFinal()
         newdecideBig = list(reversed(decideBig.items()))
-        decideBig= newdecideBig
+        decideBig = newdecideBig
         bigger = decideBig[0][0]
 
-        count=0
+        count = 0
         for element in list(newDict.keys()):
             if bigger == element:
                 return count
-            count=count+1
+            count = count+1
 
     
     def decideAppend(self):
         """
         Maintains the _solutions with its maximum length (3 best solutions)
         """
-        newDict=self.getSolutions()
+        newDict = self.getSolutions()
         totalLen = len(newDict)
 
         if totalLen >=3:
-            indexBig=self.decideBig()
+            indexBig = self.decideBig()
 
             if list(newDict.values())[indexBig] == self.getAcumulate():
                 if len(list(newDict.keys())[indexBig]) < len(self.getPath()):
@@ -163,15 +163,16 @@ class Organiser:
         Ensures:
         A boolean value
         """
-        infoDict=self.getSolutions()
-        netInfo=self.getNetworkInfo()
+        infoDict = self.getSolutions()
+        netInfo = self.getNetworkInfo()
 
         list(infoDict.keys())[indexBig][1]
 
-        testList=[list(netInfo.keys())[list(netInfo.values()).index(list(infoDict.keys())[indexBig][1])], \
-                  list(netInfo.keys())[list(netInfo.values()).index(self.getPath()[1])]]
+        testList = \
+            [list(netInfo.keys())[list(netInfo.values()).index(list(infoDict.keys())[indexBig][1])], \
+             list(netInfo.keys())[list(netInfo.values()).index(self.getPath()[1])]]
 
-        testList=sorted(testList, reverse=False)
+        testList = sorted(testList, reverse=False)
 
         if testList[0] == list(netInfo.keys())[list(netInfo.values()).index(list(infoDict.keys())[indexBig][1])]:
             return False
@@ -190,19 +191,25 @@ class Organiser:
             return newDict
         
         elif len(newDict) == 2:
-            testList={"0":list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[0][1])], "1": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[1][1])]}
+            testList = \
+                {"0":list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[0][1])], \
+                 "1": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[1][1])]}
 
         elif len(newDict) == 3:
-            testList={"0":list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[0][1])], "1": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[1][1])], "2": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[2][1])]}
+            testList = \
+                {"0":list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[0][1])], \
+                 "1": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[1][1])], \
+                    "2": list(netInfo.keys())[list(netInfo.values()).index(list(newDict.keys())[2][1])]}
 
-        testList=dict(sorted(testList.items(), reverse=False, key=lambda item: item[1]))
+        testList = dict(sorted(testList.items(), \
+                               reverse=False, key=lambda item: item[1]))
 
         testListNum=list(testList.keys())
 
-
         trueDict={}
         for element in testListNum:
-            trueDict[list(newDict.items())[int(element)][0]]=list(newDict.items())[int(element)][1]
+            trueDict[list(newDict.items())[int(element)][0]] = \
+                list(newDict.items())[int(element)][1]
 
         newtrueDict = {}
         for item in sorted(trueDict, key=len, reverse=True):

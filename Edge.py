@@ -13,10 +13,10 @@ class Edge(object):
         Constructs an Edge
         
         Requires:
-        src and dst Nodes
+        src and dst Nodes and time is str
         Ensures:
-        Edge such that src == self.getSource() and dest == self.getDestination()
-        and time == self.getTime() 
+        Edge such that src == self.getSource() and
+        dest == self.getDestination() and time == self.getTime() 
         """
         self._src = src
         self._dest = dest
@@ -110,6 +110,6 @@ class Edge(object):
 
     def __str__(self):
         """
-        String representation under the format: A->B   ???
+        String representation under the format: A->B
         """
         return self._src.getName() + '->' + self._dest.getName()

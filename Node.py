@@ -13,7 +13,7 @@ class Node(object):
         Constructs a Node
         
         Requires:
-        name is a string
+        name is str
         Ensures:
         node such that name == self.getName()
         """
